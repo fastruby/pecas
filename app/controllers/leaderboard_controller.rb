@@ -1,9 +1,11 @@
 class LeaderboardController < ApplicationController
   def users
-    @users = UserLeaderboard.includes(:user).order(:total_minutes)
+    @leaderboards = UserLeaderboard.includes(:user).current_week
+    render 'partials/leaderboard_table'
   end
 
   def projects
-    @projects = ProjectLeaderboard.all.order(:total_minutes)
+    @leaderboards = ProjectLeaderboard.includes(:project).current_week
+    render 'partials/leaderboard_table'
   end
 end

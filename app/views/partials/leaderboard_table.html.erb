@@ -7,16 +7,16 @@
       <th>Minutes</th>
     </tr>
   </thead>
-  <% @user_leaderboards.each_with_index do |leaderboard,i| %>
+  <% @leaderboards.each_with_index do |leaderboard,i| %>
     <tr>
       <td><%= i+1 %></td>
-      <td><%= leaderboard.user.name %></td>
+      <td><%= leaderboard.name %></td>
       <td><%= leaderboard.total_minutes %></td>
     </tr>
   <% end %>
   <tr>
     <td></td>
     <td></td>
-    <td><%= @user_leaderboards.map(&:total_minutes).sum %></td>
+    <td><%= @leaderboards.map(&:total_minutes).sum %></td>
   </tr>
 </table>
