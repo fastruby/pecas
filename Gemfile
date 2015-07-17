@@ -39,6 +39,12 @@ gem 'spring',        group: :development
 group :production do
   gem 'pg'
 end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'email_spec'
+  gem 'factory_girl_rails'
+end
 # Use unicorn as the app server
 # gem 'unicorn'
 
