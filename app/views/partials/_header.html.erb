@@ -1,0 +1,4 @@
+<ul class="nav nav-pills">
+  <li role="presentation" <%= current_page?(action: 'users') ? raw(' class="active"') : '' %>><%= link_to 'Team', leaderboard_users_path %></li>
+  <li role="presentation" <%= current_page?(action: 'projects') ? raw(' class="active"') : '' %>><%= link_to 'Projects', leaderboard_projects_path %></li>
+</ul>

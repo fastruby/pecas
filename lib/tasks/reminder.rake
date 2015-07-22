@@ -1,8 +1,8 @@
 namespace :reminder do
   desc "Sends reminder emails to users"
-  task email: :environment do
-    User.each do |user|
-      Reminder.send_to(user).deliver if user.entries.today.count == 0
-    end
+  task email: ['import:entries'] do
+    p 'start sending reminders'
+    User.send_reminders
+    p 'finished sending reminders'
   end
 end
