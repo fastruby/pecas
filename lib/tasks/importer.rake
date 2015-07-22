@@ -43,6 +43,9 @@ end
 namespace :calc do
   desc "Calculate Leaderboards"
   task leaderboards: :environment do
+    start_date = Time.now.beginning_of_week.to_date
+    end_date = Time.now.end_of_week.to_date
+    
     Project.all.each do |project|
       project_leaderboard = ProjectLeaderboard.find_or_create_by(project_id: project.id,
                                                                  start_date: start_date,
