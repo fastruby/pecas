@@ -1,28 +1,46 @@
-== README
+Freckler, by Ombu Labs
+========
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Freckler is a time tracking leaderboard for [http://letsfreckle.com](http://letsfreckle.com).
 
-Things you may want to cover:
+Setup
+-----
 
-* Ruby version
+To install Freckler in a development environment, you can follow the next steps:
 
-* System dependencies
+### Ruby
 
-* Configuration
+    rvm install '2.1.2'
 
-* Database creation
+### First-time only
 
-* Database initialization
+Clone the repo
 
-* How to run the test suite
+    git clone git@github.com:ombulabs/freckler.git
 
-* Services (job queues, cache servers, search engines, etc.)
+Go to the project path
 
-* Deployment instructions
+    cd path/to/freckler
 
-* ...
+Copy the YML database config
 
+    cp config/database.yml.sample config/database.yml
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Set up the database
+
+    bundle exec rake db:migrate
+
+Install dependencies
+
+    bundle install
+
+Start
+-----
+
+    rvm use 2.1.2@freckler
+    bundle exec rvmsudo rails server
+
+Copyright
+---------
+
+Copyright (c) 2016 [Ombu Labs](http://ombulabs.com)
