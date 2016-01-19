@@ -35,6 +35,7 @@ Install dependencies
     bundle install
 
 Setup and configure your `.env`
+
     cp .env.sample .env
 
 Start
