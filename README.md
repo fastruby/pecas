@@ -44,7 +44,9 @@ Start
     rvm use 2.1.2@freckler
     bundle exec rvmsudo rails server
 
-Copyright
----------
+License
+-----
 
-Copyright (c) 2016 [Ombu Labs](http://ombulabs.com)
+[License]
+
+  [license]: LICENSE
