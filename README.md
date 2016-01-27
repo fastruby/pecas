@@ -44,10 +44,9 @@ Start
     rvm use 2.1.2@freckler
     bundle exec rvmsudo rails server
 
-
 License
 -----
 
-Freckler is copyright © 2016 [Ombu Labs](http://ombulabs.com) It is free software, and may be redistributed under the terms specified in the [license].
+[License]
 
   [license]: LICENSE
