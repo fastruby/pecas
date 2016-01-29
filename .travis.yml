@@ -4,6 +4,8 @@ rvm:
   - 2.0.0-p247
   - 2.1.2
   - 2.2.4
+before_script:
+  - cp config/database.yml.sample config/database.yml
 script: "bundle exec rspec"
 gemfile:
   - Gemfile
