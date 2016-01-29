@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
     User.all.each do |user|
       if user.entries.today.count == 0
         Reminder.send_to(user).deliver
-        p "sent email to #{user.email}"
       end
     end
   end

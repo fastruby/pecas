@@ -17,7 +17,8 @@ describe 'Reminder Mailer' do
   end
 
   it "should include link in body" do
-    expect(email).to have_body_text('http://ombulabs.letsfreckle.com')
+    ENV["FRECKLE_ACCOUNT_HOST"] = 'foobar'
+    expect(email).to have_body_text('http://foobar.letsfreckle.com')
   end
 
   it "should include salutation in body" do
