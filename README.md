@@ -1,6 +1,9 @@
 Freckler, by Ombu Labs
 ========
 
+[![Build Status](https://travis-ci.org/ombulabs/freckler.svg?branch=master)](https://travis-ci.org/ombulabs/freckler)
+[![Code Climate](https://codeclimate.com/github/ombulabs/freckler/badges/gpa.svg)](https://codeclimate.com/github/ombulabs/freckler)
+
 Freckler is a time tracking leaderboard for [http://letsfreckle.com](http://letsfreckle.com).
 
 Setup
