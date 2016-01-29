@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe Project do
-  describe ".calculate_leaderboard" do
+describe ProjectLeaderboard do
+  describe ".calculate" do
     let!(:project) { create :project }
 
     context 'without entries' do
       it 'is not generating the leaderboard' do
         expect do
-          Project.calculate_leaderboard
+          ProjectLeaderboard.calculate
         end.to change(ProjectLeaderboard.where(total_minutes: 0), :count).by(1)
       end
     end
@@ -16,7 +16,7 @@ describe Project do
       let!(:entry) { create :entry, project: project }
 
       it 'is generating the leaderboard' do
-        expect { Project.calculate_leaderboard }.to change(
+        expect { ProjectLeaderboard.calculate }.to change(
           ProjectLeaderboard.where(total_minutes: 0),
           :count
         ).by(0)

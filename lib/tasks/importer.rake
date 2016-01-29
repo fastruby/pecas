@@ -43,7 +43,7 @@ end
 namespace :calc do
   desc "Calculate Leaderboards"
   task leaderboards: :environment do
-    Project.calculate_leaderboard
-    User.calculate_leaderboard
+    ProjectLeaderboard.calculate
+    UserLeaderboard.calculate
   end
 end
