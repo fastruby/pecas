@@ -3,42 +3,70 @@ require 'rails_helper'
 describe User do
   include ActiveSupport::Testing::TimeHelpers
 
-  context 'two users without entries' do
-    let!(:user_list) { create_list(:user, 2) }
+  describe '.send_reminders' do
+    context 'two users without entries' do
+      let!(:user_list) { create_list(:user, 2) }
 
-    context 'weekday' do
-      it 'sends reminders to users without entries from today' do
-        expect(Reminder).to receive(:send_to).twice.and_return(double 'Mailer', deliver: true)
+      context 'weekday' do
+        it 'sends reminders to users without entries from today' do
+          expect(Reminder).to receive(:send_to).twice.and_return(double 'Mailer', deliver: true)
 
-        travel_to Time.new(2015, 07, 17, 0, 0, 0) do
-          User.send_reminders
+          travel_to Time.new(2015, 07, 17, 0, 0, 0) do
+            User.send_reminders
+          end
+        end
+      end
+
+      context 'weekend' do
+        it 'does not send reminders' do
+          expect(Reminder).not_to receive(:send_to)
+
+          travel_to Time.new(2015, 07, 18, 0, 0, 0) do
+            User.send_reminders
+          end
+
+          travel_to Time.new(2015, 07, 19, 0, 0, 0) do
+            User.send_reminders
+          end
         end
       end
     end
 
-    context 'weekend' do
-      it 'does not send reminders' do
-        expect(Reminder).not_to receive(:send_to)
+    context 'single user with an entry' do
+      let(:user)   { create(:user, name: 'foo', email: 'bar@example.com') }
+      let!(:entry) { create(:entry, user_id: user.id) }
 
-        travel_to Time.new(2015, 07, 18, 0, 0, 0) do
-          User.send_reminders
-        end
+      it 'should not send reminder to user with an entry' do
+        expect(Reminder).to_not receive(:send_to).with(user)
 
-        travel_to Time.new(2015, 07, 19, 0, 0, 0) do
-          User.send_reminders
-        end
+        User.send_reminders
       end
     end
   end
 
-  context 'single user with an entry' do
-    let(:user)   { create(:user, name: 'foo', email: 'bar@example.com') }
-    let!(:entry) { create(:entry, user_id: user.id) }
+  describe ".calculate_leaderboard" do
+    let!(:user) { create :user }
 
-    it 'should not send reminder to user with an entry' do
-      expect(Reminder).to_not receive(:send_to).with(user)
+    context 'without entries' do
+      it 'is not generating the leaderboard' do
+        expect {
+          User.calculate_leaderboard
+        }.to change(UserLeaderboard.where(total_minutes: 0), :count).by(1)
+      end
+    end
 
-      User.send_reminders
+    context 'with entries' do
+      let!(:entry) { create :entry, user: user }
+
+      it 'is generating the leaderboard' do
+        expect { User.calculate_leaderboard }.to change(
+          UserLeaderboard.where(total_minutes: 0),
+          :count
+        ).by(0)
+
+        expect(UserLeaderboard.where(
+          total_minutes: entry.minutes).count).to eq(1)
+      end
     end
   end
 
