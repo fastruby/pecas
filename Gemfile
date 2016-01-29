@@ -35,7 +35,7 @@ group :production do
 end
 
 group :development do
-  gem 'pry-byebug', platform: [:ruby_20]
+  gem 'pry-byebug', platform: [:ruby_20], require: false
   gem 'sqlite3'
   gem 'spring'
 end
