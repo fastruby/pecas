@@ -49,9 +49,9 @@ describe User do
 
     context 'without entries' do
       it 'is not generating the leaderboard' do
-        expect {
+        expect do
           User.calculate_leaderboard
-        }.to change(UserLeaderboard.where(total_minutes: 0), :count).by(1)
+        end.to change(UserLeaderboard.where(total_minutes: 0), :count).by(1)
       end
     end
 

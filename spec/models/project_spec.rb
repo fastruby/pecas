@@ -6,9 +6,9 @@ describe Project do
 
     context 'without entries' do
       it 'is not generating the leaderboard' do
-        expect {
+        expect do
           Project.calculate_leaderboard
-        }.to change(ProjectLeaderboard.where(total_minutes: 0), :count).by(1)
+        end.to change(ProjectLeaderboard.where(total_minutes: 0), :count).by(1)
       end
     end
 
