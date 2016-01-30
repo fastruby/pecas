@@ -1,5 +1,3 @@
-require 'byebug'
-
 namespace :import do
 
   task users: :environment do
