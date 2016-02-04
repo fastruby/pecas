@@ -1,15 +1,15 @@
-Freckler, by Ombu Labs
+Pecas, by Ombu Labs
 ========
 
-[![Build Status](https://travis-ci.org/ombulabs/freckler.svg?branch=master)](https://travis-ci.org/ombulabs/freckler)
-[![Code Climate](https://codeclimate.com/github/ombulabs/freckler/badges/gpa.svg)](https://codeclimate.com/github/ombulabs/freckler)
+[![Build Status](https://travis-ci.org/ombulabs/pecas.svg?branch=master)](https://travis-ci.org/ombulabs/pecas)
+[![Code Climate](https://codeclimate.com/github/ombulabs/pecas/badges/gpa.svg)](https://codeclimate.com/github/ombulabs/pecas)
 
-Freckler is a time tracking leaderboard for [http://letsfreckle.com](http://letsfreckle.com).
+Pecas is a time tracking leaderboard for [http://letsfreckle.com](http://letsfreckle.com).
 
 Setup
 -----
 
-To install Freckler in a development environment, you can follow the next steps:
+To install Pecas in a development environment, you can follow the next steps:
 
 ### Ruby
 
@@ -19,11 +19,11 @@ To install Freckler in a development environment, you can follow the next steps:
 
 Clone the repo
 
-    git clone git@github.com:ombulabs/freckler.git
+    git clone git@github.com:ombulabs/pecas.git
 
 Go to the project path
 
-    cd path/to/freckler
+    cd path/to/pecas
 
 Copy the YML database config
 
@@ -44,7 +44,7 @@ Setup and configure your `.env`
 Start
 -----
 
-    rvm use 2.1.2@freckler
+    rvm use 2.1.2@pecas
     bundle exec rvmsudo rails server
 
 License
