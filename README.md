@@ -47,6 +47,17 @@ Start
     rvm use 2.1.2@pecas
     bundle exec rvmsudo rails server
 
+Import
+------
+
+Import the entries with:
+
+    rake import:entries
+
+Calculate the leaderboards with:
+
+    rake calc:leaderboards
+
 License
 -----
 
