@@ -17,6 +17,24 @@ describe User do
         end
       end
 
+      context 'holiday in argentina' do
+        before do
+          allow(ENV).to receive(:[]).with("COUNTRY_CODE").and_return("ar")
+        end
+
+        it 'does not send reminders' do
+          expect(Reminder).not_to receive(:send_to)
+
+          travel_to Time.new(2016, 03, 24, 0, 0, 0) do
+            User.send_reminders
+          end
+
+          travel_to Time.new(2016, 06, 20, 0, 0, 0) do
+            User.send_reminders
+          end
+        end
+      end
+
       context 'weekend' do
         it 'does not send reminders' do
           expect(Reminder).not_to receive(:send_to)
