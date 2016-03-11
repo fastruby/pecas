@@ -11,7 +11,7 @@ describe User do
         it 'sends reminders to users without entries from today' do
           expect(Reminder).to receive(:send_to).twice.and_return(double 'Mailer', deliver: true)
 
-          travel_to Time.new(2015, 07, 17, 0, 0, 0) do
+          travel_to Time.new(2016, 03, 23, 0, 0, 0) do
             User.send_reminders
           end
         end
@@ -39,11 +39,11 @@ describe User do
         it 'does not send reminders' do
           expect(Reminder).not_to receive(:send_to)
 
-          travel_to Time.new(2015, 07, 18, 0, 0, 0) do
+          travel_to Time.new(2016, 12, 10, 0, 0, 0) do
             User.send_reminders
           end
 
-          travel_to Time.new(2015, 07, 19, 0, 0, 0) do
+          travel_to Time.new(2016, 12, 11, 0, 0, 0) do
             User.send_reminders
           end
         end
