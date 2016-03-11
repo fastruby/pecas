@@ -9,7 +9,8 @@ describe User do
 
       context 'weekday' do
         it 'sends reminders to users without entries from today' do
-          expect(Reminder).to receive(:send_to).twice.and_return(double 'Mailer', deliver: true)
+          expect(Reminder).to receive(:send_to).twice
+            .and_return(double 'Mailer', deliver: true)
 
           travel_to Time.new(2016, 03, 23, 0, 0, 0) do
             User.send_reminders
@@ -30,6 +31,21 @@ describe User do
           end
 
           travel_to Time.new(2016, 06, 20, 0, 0, 0) do
+            User.send_reminders
+          end
+        end
+      end
+
+      context 'holiday in argentina but country code is not set' do
+        before do
+          allow(ENV).to receive(:[]).with("COUNTRY_CODE").and_return(nil)
+        end
+
+        it 'sends reminders to users with entries' do
+          expect(Reminder).to receive(:send_to).twice
+            .and_return(double 'Mailer', deliver: true)
+
+          travel_to Time.new(2016, 03, 24, 0, 0, 0) do
             User.send_reminders
           end
         end
