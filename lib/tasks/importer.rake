@@ -1,7 +1,13 @@
+require "freckle"
+
 namespace :import do
 
+  def freckle_client
+    @freckle_client ||= Freckle::Client.new(token: ENV["FRECKLE_TOKEN"])
+  end
+
   task users: :environment do
-    LetsFreckle::User.all.each do |user|
+    freckle_client.get_users.each do |user|
       u = User.find_or_create_by(id: user.id)
       u.update_columns(name: "#{user.first_name} #{user.last_name}",
                        email: user.email)
@@ -9,7 +15,7 @@ namespace :import do
   end
 
   task projects: :environment do
-    LetsFreckle::Project.all.each do |project|
+    freckle_client.get_projects.each do |project|
       p1 = Project.find_or_create_by(id: project.id)
       p1.update_columns(name: project.name)
     end
@@ -22,9 +28,10 @@ namespace :import do
 
     puts "start importing entries from #{start_date} to #{end_date}"
 
-    LetsFreckle::Entry.all(all_pages: true,
-                           from: start_date,
-                           to:  end_date).each do |entry|
+    # TODO: This can only return a max of 30 entries, but it should actually
+    # loop through all available pages for the given dates.
+    result = freckle_client.get_entries(from: start_date, to: end_date)
+    result.each do |entry|
       e1 = Entry.find_or_create_by(id: entry.id)
       e1.update_columns(
         description: entry.description,
