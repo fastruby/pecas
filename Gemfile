@@ -14,7 +14,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 gem 'dotenv-rails'
-gem 'freckles'
+gem 'freckles', github: 'ombulabs/freckles',
+                branch: 'add-last-page-to-responses-with-rel-last-link'
 
 gem 'twitter-bootstrap-rails'
 
