@@ -46,7 +46,7 @@ namespace :import do
 
     if result.try(:last_page)
       last_page = result.last_page.match(/page=(\d+)/)[1].to_i
-      [1..last_page].each do |page|
+      [2..last_page].each do |page|
         result = freckle_client.get_entries(from: start_date, to: end_date,
                                             page: page)
         save_entries_for(result)
