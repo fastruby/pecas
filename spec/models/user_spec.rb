@@ -20,7 +20,7 @@ describe User do
 
       context 'holiday in argentina' do
         before do
-          allow(ENV).to receive(:[]).with("COUNTRY_CODE").and_return("ar")
+          stub_const("ENV", {"COUNTRY_CODE" => "ar"})
         end
 
         it 'does not send reminders' do
@@ -38,7 +38,7 @@ describe User do
 
       context 'holiday in argentina but country code is not set' do
         before do
-          allow(ENV).to receive(:[]).with("COUNTRY_CODE").and_return(nil)
+          stub_const("ENV", {})
         end
 
         it 'sends reminders to users with entries' do
