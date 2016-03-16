@@ -79,6 +79,7 @@ GEM
       activesupport (>= 4.1.0)
     hashie (1.2.0)
     hike (1.2.3)
+    holidays (3.2.0)
     i18n (0.7.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
@@ -203,6 +204,7 @@ DEPENDENCIES
   dotenv
   email_spec
   factory_girl_rails
+  holidays
   jbuilder (~> 2.0)
   jquery-rails
   letsfreckle-client!

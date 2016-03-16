@@ -41,6 +41,9 @@ Setup and configure your `.env`
 
     cp .env.sample .env
 
+You can setup your `COUNTRY_CODE` environment variable with an ISO 3166 country code.
+Otherwise the E-Mails will be sent on holidays.
+
 Start
 -----
 
