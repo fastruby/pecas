@@ -20,7 +20,7 @@ namespace :import do
   end
 
   desc "Import new Freckle entries"
-  task entries: [:projects, :environment] do
+  task entries: [:users, :projects, :environment] do
     start_date = Time.now.beginning_of_week.to_date
     end_date = Time.now.end_of_week.to_date
 
