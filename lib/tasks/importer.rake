@@ -1,26 +1,11 @@
-require "freckle"
-
 namespace :import do
 
-  def freckle_client
-    @freckle_client ||= Freckle::Client.new(token: ENV["FRECKLE_TOKEN"])
-  end
-
-  def save_entries_for(result)
-    result.each do |entry|
-      e1 = Entry.find_or_create_by(id: entry.id)
-      e1.update_columns(
-        description: entry.description,
-        minutes:     entry.minutes,
-        date:        entry.date,
-        user_id:     entry.user.id,
-        project_id:  entry.project.id
-      )
-    end
+  def freckle_service
+    FreckleService.new
   end
 
   task users: :environment do
-    freckle_client.get_users.each do |user|
+    freckle_service.client.get_users.each do |user|
       u = User.find_or_create_by(id: user.id)
       u.update_columns(name: "#{user.first_name} #{user.last_name}",
                        email: user.email)
@@ -28,7 +13,7 @@ namespace :import do
   end
 
   task projects: :environment do
-    freckle_client.get_projects.each do |project|
+    freckle_service.client.get_projects.each do |project|
       p1 = Project.find_or_create_by(id: project.id)
       p1.update_columns(name: project.name)
     end
@@ -41,17 +26,7 @@ namespace :import do
 
     puts "start importing entries from #{start_date} to #{end_date}"
 
-    result = freckle_client.get_entries(from: start_date, to: end_date)
-    save_entries_for(result)
-
-    if result.try(:last_page)
-      last_page = result.last_page.match(/page=(\d+)/)[1].to_i
-      [2..last_page].each do |page|
-        result = freckle_client.get_entries(from: start_date, to: end_date,
-                                            page: page)
-        save_entries_for(result)
-      end
-    end
+    freckle_service.import_entries(start_date, end_date)
 
     puts 'finished importing entries'
   end
