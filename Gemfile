@@ -13,8 +13,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
-gem 'dotenv'
-gem 'letsfreckle-client', branch: :master, require: 'letsfreckle', github: 'ryanlecompte/letsfreckle-client'
+gem 'dotenv-rails'
+gem 'freckles', '~> 1.1.0'
 
 gem 'twitter-bootstrap-rails'
 
