@@ -61,6 +61,13 @@ Calculate the leaderboards with:
 
     rake calc:leaderboards
 
+Demo data
+---------
+
+Generate demo data with:
+
+    rake demo_data:setup
+
 License
 -----
 
