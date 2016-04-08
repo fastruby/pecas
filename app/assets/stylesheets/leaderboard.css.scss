@@ -59,7 +59,29 @@ header{
   line-height: 80px;
   border-bottom: 1px solid #e8e8e8;
   padding: 0 20px;
-  h1, .menu{
+	#logo{
+		float: left;
+		height: 82px;
+		border-right: 1px solid #e8e8e8;
+		padding-right: 20px;
+		padding-top: 16px;
+		h1{
+			background-image: url('pecas.svg');
+			background-repeat: no-repeat;
+			width: 155px;
+			height: 40px;
+			text-indent: -9999px;
+			background-size: 100%;
+		}
+		h2{
+			line-height: initial;
+			color: #8C8C8C;
+	    font-size: 10px;
+	    text-transform: uppercase;
+	    letter-spacing: 0.5px;
+		}
+	}
+  .menu{
     display: inline-block;
     &.menu{
       font-weight: 700;
@@ -131,4 +153,27 @@ header{
       background-color: #ffffff;
     }
   }
+}
+@media screen and (max-width:768px){
+	header{
+		#logo{
+			float: none;
+			margin: auto;
+			text-align: center;
+			padding-right: 0;
+			border: 0;
+			h1{
+				margin: auto;
+			}
+		}
+	}
+}
+@media screen and (max-width:500px){
+	.wrapper{
+		.board{
+			h1{
+				display: block;
+			}
+		}
+	}
 }
