@@ -186,6 +186,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   coffee-rails (~> 4.0.0)
   dotenv-rails
   email_spec
