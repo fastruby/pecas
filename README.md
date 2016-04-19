@@ -41,11 +41,32 @@ Setup and configure your `.env`
 
     cp .env.sample .env
 
+You can setup your `COUNTRY_CODE` environment variable with an ISO 3166 country code.
+Otherwise the E-Mails will be sent on holidays.
+
 Start
 -----
 
     rvm use 2.1.2@pecas
     bundle exec rvmsudo rails server
+
+Import
+------
+
+Import the entries with:
+
+    rake import:entries
+
+Calculate the leaderboards with:
+
+    rake calc:leaderboards
+
+Demo data
+---------
+
+Generate demo data with:
+
+    rake demo_data:setup
 
 License
 -----
