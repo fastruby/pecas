@@ -1,4 +1,11 @@
-<ul class="nav nav-pills">
-  <li role="presentation" <%= current_page?(action: 'users') ? raw(' class="active"') : '' %>><%= link_to 'Team', leaderboard_users_path %></li>
-  <li role="presentation" <%= current_page?(action: 'projects') ? raw(' class="active"') : '' %>><%= link_to 'Projects', leaderboard_projects_path %></li>
-</ul>
+<header>
+  <div id="logo">
+    <h1>Pecas</h1>
+    <h2>Leaderboards for Freckle</h2>
+  </div>
+
+  <ul class="menu">
+    <li role="presentation" <%= current_page?(action: 'users') ? raw(' class="active"') : '' %>><%= link_to 'Team', leaderboard_users_path %></li>
+    <li role="presentation" <%= current_page?(action: 'projects') ? raw(' class="active"') : '' %>><%= link_to 'Projects', leaderboard_projects_path %></li>
+  </ul>
+</header>

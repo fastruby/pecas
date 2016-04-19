@@ -38,6 +38,7 @@ end
 
 group :development do
   gem 'pry-byebug', platform: [:ruby_20], require: false
+  gem "byebug"
   gem 'sqlite3'
   gem 'spring'
 end
