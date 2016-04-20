@@ -1,6 +1,7 @@
 class LeaderboardController < ApplicationController
   def users
     @leaderboards = UserLeaderboard.includes(:user).week(start_date, end_date)
+      .with_logged_minutes
     render 'partials/leaderboard_table'
   end
 
