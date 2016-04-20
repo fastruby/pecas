@@ -34,7 +34,7 @@ describe LeaderboardController, type: :controller do
 
           expect(response.status).to   eq(200)
           expect(response.body).to     include("1234")
-          expect(response.body).to_not include("1133")
+          expect(response.body).not_to include("1133")
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -55,7 +55,7 @@ describe LeaderboardController, type: :controller do
 
             expect(response.status).to   eq(200)
             expect(response.body).not_to include(project.name)
-            expect(response.body).to_not include("1133")
+            expect(response.body).not_to include("1133")
             expect(response.body).to     include("2015-07-13")
             expect(response.body).to     include("2015-07-19")
           end
@@ -68,7 +68,7 @@ describe LeaderboardController, type: :controller do
 
           expect(response.status).to   eq(200)
           expect(response.body).to     include("1234")
-          expect(response.body).to_not include("1133")
+          expect(response.body).not_to include("1133")
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -80,7 +80,7 @@ describe LeaderboardController, type: :controller do
 
           expect(response.status).to  eq(200)
           expect(response.body).to     include("1133")
-          expect(response.body).to_not include("1234")
+          expect(response.body).not_to include("1234")
           expect(response.body).to     include("2015-07-06")
           expect(response.body).to     include("2015-07-12")
         end
@@ -91,8 +91,8 @@ describe LeaderboardController, type: :controller do
           get :projects, weeks_ago: 2
 
           expect(response.status).to eq(200)
-          expect(response.body).to_not include("1133")
-          expect(response.body).to_not include("1234")
+          expect(response.body).not_to include("1133")
+          expect(response.body).not_to include("1234")
           expect(response.body).to     include("2015-06-29")
           expect(response.body).to     include("2015-07-05")
         end
@@ -130,7 +130,7 @@ describe LeaderboardController, type: :controller do
 
           expect(response.status).to   eq(200)
           expect(response.body).to     include("1234")
-          expect(response.body).to_not include("1133")
+          expect(response.body).not_to include("1133")
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -163,7 +163,7 @@ describe LeaderboardController, type: :controller do
 
           expect(response.status).to   eq(200)
           expect(response.body).to     include("1234")
-          expect(response.body).to_not include("1133")
+          expect(response.body).not_to include("1133")
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -175,7 +175,7 @@ describe LeaderboardController, type: :controller do
 
           expect(response.status).to  eq(200)
           expect(response.body).to     include("1133")
-          expect(response.body).to_not include("1234")
+          expect(response.body).not_to include("1234")
           expect(response.body).to     include("2015-07-06")
           expect(response.body).to     include("2015-07-12")
         end
@@ -186,8 +186,8 @@ describe LeaderboardController, type: :controller do
           get :users, weeks_ago: 2
 
           expect(response.status).to eq(200)
-          expect(response.body).to_not include("1133")
-          expect(response.body).to_not include("1234")
+          expect(response.body).not_to include("1133")
+          expect(response.body).not_to include("1234")
           expect(response.body).to     include("2015-06-29")
           expect(response.body).to     include("2015-07-05")
         end
