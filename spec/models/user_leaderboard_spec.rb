@@ -6,7 +6,9 @@ describe UserLeaderboard do
   describe ".with_logged_minutes" do
     let!(:user) { create :user }
 
-    context 'without entries' do
+    context "user has entry with 0 minutes" do
+      let!(:entry) { create :entry, user: user }
+
       it 'is not generating the leaderboard' do
         expect do
           UserLeaderboard.calculate
