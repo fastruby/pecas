@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe ProjectLeaderboard do
   describe ".calculate" do
@@ -8,17 +8,17 @@ describe ProjectLeaderboard do
       context "user has entry with 0 minutes" do
         let!(:entry) { create :entry, project: project, minutes: 0 }
 
-        it 'is not generating the leaderboard' do
+        it "is not generating the leaderboard" do
           expect do
             ProjectLeaderboard.calculate
           end.to change(ProjectLeaderboard.with_logged_minutes, :count).by(0)
         end
       end
 
-      context 'with entries' do
+      context "with entries" do
         let!(:entry) { create :entry, project: project }
 
-        it 'is generating the leaderboard' do
+        it "is generating the leaderboard" do
           expect { ProjectLeaderboard.calculate }.to change(
             ProjectLeaderboard.with_logged_minutes,
             :count
@@ -31,18 +31,18 @@ describe ProjectLeaderboard do
     end
 
 
-    context 'without entries' do
-      it 'is not generating the leaderboard' do
+    context "without entries" do
+      it "is not generating the leaderboard" do
         expect do
           ProjectLeaderboard.calculate
         end.to change(ProjectLeaderboard.where(total_minutes: 0), :count).by(1)
       end
     end
 
-    context 'with entries' do
+    context "with entries" do
       let!(:entry) { create :entry, project: project }
 
-      it 'is generating the leaderboard' do
+      it "is generating the leaderboard" do
         expect { ProjectLeaderboard.calculate }.to change(
           ProjectLeaderboard.where(total_minutes: 0),
           :count
