@@ -4,14 +4,6 @@ describe LeaderboardController, type: :controller do
   include ActiveSupport::Testing::TimeHelpers
   render_views
 
-  describe '#users' do
-    it 'renders successful' do
-      get :users
-
-      expect(response.status).to eq(200)
-    end
-  end
-
   describe '#projects' do
     it 'renders successful' do
       get :projects
