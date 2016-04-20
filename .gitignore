@@ -18,3 +18,4 @@ config/database.yml
 /log/*.log
 /tmp
 .ruby-version
+.byebug_history
