@@ -1,5 +1,5 @@
 class ProjectLeaderboard < ActiveRecord::Base
-  include CurrentWeek
+  include LeaderboardScopes
   include LeaderboardCalculation
 
   belongs_to :project
