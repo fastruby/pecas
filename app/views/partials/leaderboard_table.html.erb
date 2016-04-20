@@ -15,14 +15,16 @@
           <td><%= i+1 %></td>
           <td><%= leaderboard.name %></td>
           <td><%= leaderboard.total_minutes %></td>
-          <td><%= leaderboard.total_minutes.to_f / 60 %></td>
+          <td><%= (leaderboard.total_minutes.to_f / 60).round(2) %></td>
         </tr>
       <% end %>
       <tr>
         <td></td>
         <td></td>
         <td><%= @leaderboards.map(&:total_minutes).sum %></td>
-        <td><%= @leaderboards.map(&:total_minutes).sum.to_f / 60 %></td>
+        <td>
+          <%= (@leaderboards.map(&:total_minutes).sum.to_f / 60).round(2) %>
+        </td>
       </tr>
     </table>
   </div>
