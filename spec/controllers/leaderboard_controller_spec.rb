@@ -114,6 +114,27 @@ describe LeaderboardController, type: :controller do
         end
       end
 
+      context "user without logged minutes" do
+        let!(:leaderboard_2) {
+          FactoryGirl.create :user_leaderboard,
+                             total_minutes: 0,
+                             start_date: Time.new(2015, 07, 13, 0, 0, 0).to_date,
+                             end_date: Time.new(2015, 07, 19, 0, 0, 0).to_date,
+                             user: user
+        }
+
+        it 'does not show user' do
+          travel_to Time.new(2015, 07, 18, 0, 0, 0) do
+            get :users
+
+            expect(response.status).to   eq(200)
+            expect(response.body).not_to include(user.name)
+            expect(response.body).to     include("2015-07-13")
+            expect(response.body).to     include("2015-07-19")
+          end
+        end
+      end
+
       it 'shows current leaderboard for current week' do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :users, weeks_ago: 0
@@ -151,5 +172,4 @@ describe LeaderboardController, type: :controller do
       end
     end
   end
-
 end
