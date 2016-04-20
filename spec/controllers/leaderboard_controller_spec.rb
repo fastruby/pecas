@@ -1,17 +1,17 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe LeaderboardController, type: :controller do
   include ActiveSupport::Testing::TimeHelpers
   render_views
 
-  describe '#projects' do
-    it 'renders successful' do
+  describe "#projects" do
+    it "renders successful" do
       get :projects
 
       expect(response.status).to eq(200)
     end
 
-    context 'leaderboard exists' do
+    context "leaderboard exists" do
       let(:project) { FactoryGirl.create :project }
       let!(:leaderboard_1) {
         FactoryGirl.create :project_leaderboard,
@@ -28,7 +28,7 @@ describe LeaderboardController, type: :controller do
                            project: project
       }
 
-      it 'shows current leaderboard without params' do
+      it "shows current leaderboard without params" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :projects
 
@@ -40,7 +40,7 @@ describe LeaderboardController, type: :controller do
         end
       end
 
-      it 'shows current leaderboard for current week' do
+      it "shows current leaderboard for current week" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :projects, weeks_ago: 0
 
@@ -52,7 +52,7 @@ describe LeaderboardController, type: :controller do
         end
       end
 
-      it 'shows leaderboard from one week ago' do
+      it "shows leaderboard from one week ago" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :projects, weeks_ago: 1
 
@@ -64,7 +64,7 @@ describe LeaderboardController, type: :controller do
         end
       end
 
-      it 'shows leaderboard from two weeks ago' do
+      it "shows leaderboard from two weeks ago" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :projects, weeks_ago: 2
 
@@ -78,14 +78,14 @@ describe LeaderboardController, type: :controller do
     end
   end
 
-  describe '#users' do
-    it 'renders successful' do
+  describe "#users" do
+    it "renders successful" do
       get :users
 
       expect(response.status).to eq(200)
     end
 
-    context 'leaderboard exists' do
+    context "leaderboard exists" do
       let(:user) { FactoryGirl.create :user }
       let!(:leaderboard_1) {
         FactoryGirl.create :user_leaderboard,
@@ -102,7 +102,7 @@ describe LeaderboardController, type: :controller do
                            user: user
       }
 
-      it 'shows current leaderboard without params' do
+      it "shows current leaderboard without params" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :users
 
@@ -123,7 +123,7 @@ describe LeaderboardController, type: :controller do
                              user: user
         }
 
-        it 'does not show user' do
+        it "does not show user" do
           travel_to Time.new(2015, 07, 18, 0, 0, 0) do
             get :users
 
@@ -135,7 +135,7 @@ describe LeaderboardController, type: :controller do
         end
       end
 
-      it 'shows current leaderboard for current week' do
+      it "shows current leaderboard for current week" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :users, weeks_ago: 0
 
@@ -147,7 +147,7 @@ describe LeaderboardController, type: :controller do
         end
       end
 
-      it 'shows leaderboard from one week ago' do
+      it "shows leaderboard from one week ago" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :users, weeks_ago: 1
 
@@ -159,7 +159,7 @@ describe LeaderboardController, type: :controller do
         end
       end
 
-      it 'shows leaderboard from two weeks ago' do
+      it "shows leaderboard from two weeks ago" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :users, weeks_ago: 2
 
