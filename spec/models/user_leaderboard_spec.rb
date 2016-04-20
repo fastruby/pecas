@@ -7,7 +7,7 @@ describe UserLeaderboard do
     let!(:user) { create :user }
 
     context "user has entry with 0 minutes" do
-      let!(:entry) { create :entry, user: user }
+      let!(:entry) { create :entry, user: user, minutes: 0 }
 
       it 'is not generating the leaderboard' do
         expect do
