@@ -40,6 +40,28 @@ describe LeaderboardController, type: :controller do
         end
       end
 
+      context "project without logged minutes" do
+        let!(:leaderboard_2) {
+          FactoryGirl.create :project_leaderboard,
+                             total_minutes: 0,
+                             start_date: Time.new(2015, 07, 13, 0, 0, 0).to_date,
+                             end_date: Time.new(2015, 07, 19, 0, 0, 0).to_date,
+                             project: project
+        }
+
+        it "shows current leaderboard without params" do
+          travel_to Time.new(2015, 07, 18, 0, 0, 0) do
+            get :projects
+
+            expect(response.status).to   eq(200)
+            expect(response.body).not_to include(project.name)
+            expect(response.body).to_not include("1133")
+            expect(response.body).to     include("2015-07-13")
+            expect(response.body).to     include("2015-07-19")
+          end
+        end
+      end
+
       it "shows current leaderboard for current week" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
           get :projects, weeks_ago: 0
