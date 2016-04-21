@@ -1,22 +1,11 @@
 namespace :import do
 
-  def freckle_service
-    FreckleService.new
-  end
-
   task users: :environment do
-    freckle_service.client.get_users.each do |user|
-      u = User.find_or_create_by(id: user.id)
-      u.update_columns(name: "#{user.first_name} #{user.last_name}",
-                       email: user.email)
-    end
+    FreckleService.import_users
   end
 
   task projects: :environment do
-    freckle_service.client.get_projects.each do |project|
-      p1 = Project.find_or_create_by(id: project.id)
-      p1.update_columns(name: project.name)
-    end
+    FreckleService.import_projects
   end
 
   desc "Import new Freckle entries"
@@ -26,7 +15,7 @@ namespace :import do
 
     puts "start importing entries from #{start_date} to #{end_date}"
 
-    freckle_service.import_entries(start_date, end_date)
+    FreckleService.import_entries(start_date, end_date)
 
     puts 'finished importing entries'
   end
