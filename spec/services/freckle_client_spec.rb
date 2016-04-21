@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe FreckleService do
-  subject { described_class.new }
   before do
     stub_const("ENV", {"FRECKLE_TOKEN" => "foobar"})
   end
@@ -12,19 +11,19 @@ describe FreckleService do
 
     context "without any new entries" do
       before do
-        allow(subject.client).to receive(:get_entries).and_return([])
+        allow(described_class.client).to receive(:get_entries).and_return([])
       end
 
       it "doesn't create any entries in the database" do
         expect do
-          subject.import_entries(start_date, end_date)
+          described_class.import_entries(start_date, end_date)
         end.to change(Entry, :count).by(0)
       end
     end
 
     context "with new entries" do
-      let(:freckle_user) { double("Freckle::User", id: 1) }
-      let(:freckle_project) { double("Freckle::Project", id: 1) }
+      let(:freckle_user) { double("Freckle::User", id: 1, state: "active") }
+      let(:freckle_project) { double("Freckle::Project", id: 1, enabled: true) }
       let(:freckle_entry) do
         double("Freckle::Entry", id: 1, description: "Hello!", minutes: 60,
                                  date: Time.zone.now, user: freckle_user,
@@ -32,13 +31,13 @@ describe FreckleService do
       end
 
       before do
-        allow(subject.client).to(
+        allow(described_class.client).to(
           receive(:get_entries).and_return([freckle_entry]))
       end
 
       it "creates the new entries in the database" do
         expect do
-          subject.import_entries(start_date, end_date)
+          described_class.import_entries(start_date, end_date)
         end.to change(Entry, :count).by(1)
 
         entry = Entry.last
@@ -48,11 +47,11 @@ describe FreckleService do
 
       it "doesn't create entries again if they already exist" do
         expect do
-          subject.import_entries(start_date, end_date)
+          described_class.import_entries(start_date, end_date)
         end.to change(Entry, :count).by(1)
 
         expect do
-          subject.import_entries(start_date, end_date)
+          described_class.import_entries(start_date, end_date)
         end.to change(Entry, :count).by(0)
       end
     end

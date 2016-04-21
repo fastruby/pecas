@@ -76,6 +76,18 @@ describe User do
         User.send_reminders
       end
     end
+
+    context 'disabled user' do
+      let(:user) do
+        create(:user, name: 'foo', email: 'bar@example.com', state: "disabled")
+      end
+
+      it 'should not send reminder to user with an entry' do
+        expect(Reminder).not_to receive(:send_to).with(user)
+
+        User.send_reminders
+      end
+    end
   end
 
   describe '#minutes_of_current_week' do

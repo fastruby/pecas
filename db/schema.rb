@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716202854) do
+ActiveRecord::Schema.define(version: 20160421164630) do
 
   create_table "entries", force: :cascade do |t|
     t.text     "description"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150716202854) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "enabled"
   end
 
   create_table "user_leaderboards", force: :cascade do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150716202854) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "email"
+    t.string   "state"
   end
 
 end

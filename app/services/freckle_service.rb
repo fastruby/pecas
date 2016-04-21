@@ -1,13 +1,27 @@
 require "freckle"
 
 class FreckleService
-  attr_reader :client
 
-  def initialize
+  def self.client
     @client ||= Freckle::Client.new(token: ENV["FRECKLE_TOKEN"])
   end
 
-  def import_entries(start_date, end_date)
+  def self.import_users
+    client.get_users.each do |user|
+      u = User.find_or_create_by(id: user.id)
+      u.update_attributes(name: "#{user.first_name} #{user.last_name}",
+                          email: user.email, state: user.state)
+    end
+  end
+
+  def self.import_projects
+    client.get_projects.each do |project|
+      p1 = Project.find_or_create_by(id: project.id)
+      p1.update_attributes(name: project.name, enabled: project.enabled)
+    end
+  end
+
+  def self.import_entries(start_date, end_date)
     result = client.get_entries(from: start_date, to: end_date)
     save_entries_for(result)
 
@@ -22,7 +36,7 @@ class FreckleService
 
   private
 
-  def save_entries_for(result)
+  def self.save_entries_for(result)
     result.each do |entry|
       e1 = Entry.find_or_create_by(id: entry.id)
       e1.update_columns(
