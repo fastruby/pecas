@@ -1,11 +1,15 @@
 require 'active_support/concern'
 
-module CurrentWeek
+module LeaderboardScopes
   extend ActiveSupport::Concern
 
   included do
-    scope :week, lambda { |from, to|
+    def self.week(from, to)
       where(start_date: from, end_date: to).order('total_minutes desc')
-    }
+    end
+
+    def self.with_logged_minutes
+      where.not(total_minutes: 0)
+    end
   end
 end

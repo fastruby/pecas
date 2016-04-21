@@ -71,7 +71,7 @@ describe User do
       let!(:entry) { create(:entry, user_id: user.id) }
 
       it 'should not send reminder to user with an entry' do
-        expect(Reminder).to_not receive(:send_to).with(user)
+        expect(Reminder).not_to receive(:send_to).with(user)
 
         User.send_reminders
       end
