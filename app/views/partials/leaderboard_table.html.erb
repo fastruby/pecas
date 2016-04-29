@@ -1,31 +1,50 @@
 <div class="board">
   <h1><strong>From:</strong> <%= @start_date %> - <%= @end_date %></h1>
+
   <div class="board-table">
     <table class="table table-striped">
       <thead>
         <tr class="title">
           <th>Rank</th>
           <th>Name</th>
-          <th>Minutes</th>
           <th>Hours</th>
         </tr>
       </thead>
-      <% @leaderboards.each_with_index do |leaderboard,i| %>
-        <tr>
-          <td><%= i+1 %></td>
+      <% @leaderboards.each_with_index do |leaderboard, i| %>
+        <tr class="<%= cycle('info', '') %>">
+          <td><%= i + 1 %></td>
           <td><%= leaderboard.name %></td>
-          <td><%= leaderboard.total_minutes %></td>
-          <td><%= (leaderboard.total_minutes.to_f / 60).round(2) %></td>
+          <td>
+            <%= number_to_human(
+                  (leaderboard.total_minutes.to_f / 60).round(2))
+            %>
+          </td>
         </tr>
       <% end %>
-      <tr>
-        <td></td>
-        <td></td>
-        <td><%= @leaderboards.map(&:total_minutes).sum %></td>
+      <tr class="success">
+        <td class="total" colspan=2>Total:</td>
         <td>
-          <%= (@leaderboards.map(&:total_minutes).sum.to_f / 60).round(2) %>
+          <%= pluralize(
+                number_to_human(
+                  (@leaderboards.map(&:total_minutes).sum.to_f / 60).round(2)), 'hour') %>
         </td>
       </tr>
     </table>
   </div>
+  <nav>
+    <ul class="pagination">
+      <li class="pull-left">
+        <a href="?weeks_ago=<%= @weeks_ago + 1 %>" aria-label="Previous Week">
+          <span aria-hidden="true">Previous Week</span>
+        </a>
+      </li>
+      <% unless @weeks_ago <= 0 %>
+        <li class="pull-right">
+          <a href="?weeks_ago=<%= @weeks_ago - 1 %>" aria-label="Next Week">
+            <span aria-hidden="true">Next Week</span>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
 </div>
