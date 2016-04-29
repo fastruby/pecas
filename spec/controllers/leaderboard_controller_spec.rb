@@ -15,14 +15,14 @@ describe LeaderboardController, type: :controller do
       let(:project) { FactoryGirl.create :project }
       let!(:leaderboard_1) {
         FactoryGirl.create :project_leaderboard,
-                           total_minutes: 1133,
+                           total_minutes: 1920,
                            start_date: Time.new(2015, 07, 6, 0, 0, 0).to_date,
                            end_date: Time.new(2015, 07, 12, 0, 0, 0).to_date,
                            project: project
       }
       let!(:leaderboard_2) {
         FactoryGirl.create :project_leaderboard,
-                           total_minutes: 1234,
+                           total_minutes: 1740,
                            start_date: Time.new(2015, 07, 13, 0, 0, 0).to_date,
                            end_date: Time.new(2015, 07, 19, 0, 0, 0).to_date,
                            project: project
@@ -33,8 +33,8 @@ describe LeaderboardController, type: :controller do
           get :projects
 
           expect(response.status).to   eq(200)
-          expect(response.body).to     include("1234")
-          expect(response.body).not_to include("1133")
+          expect(response.body).to     include("29")
+          expect(response.body).not_to include("32")
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -55,7 +55,7 @@ describe LeaderboardController, type: :controller do
 
             expect(response.status).to   eq(200)
             expect(response.body).not_to include(project.name)
-            expect(response.body).not_to include("1133")
+            expect(response.body).not_to include("32")
             expect(response.body).to     include("2015-07-13")
             expect(response.body).to     include("2015-07-19")
           end
@@ -67,8 +67,8 @@ describe LeaderboardController, type: :controller do
           get :projects, weeks_ago: 0
 
           expect(response.status).to   eq(200)
-          expect(response.body).to     include("1234")
-          expect(response.body).not_to include("1133")
+          expect(response.body).to     include("29")
+          expect(response.body).not_to include("32")
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -79,8 +79,8 @@ describe LeaderboardController, type: :controller do
           get :projects, weeks_ago: 1
 
           expect(response.status).to  eq(200)
-          expect(response.body).to     include("1133")
-          expect(response.body).not_to include("1234")
+          expect(response.body).to     include("32")
+          expect(response.body).not_to include("29")
           expect(response.body).to     include("2015-07-06")
           expect(response.body).to     include("2015-07-12")
         end
@@ -91,8 +91,10 @@ describe LeaderboardController, type: :controller do
           get :projects, weeks_ago: 2
 
           expect(response.status).to eq(200)
-          expect(response.body).not_to include("1133")
-          expect(response.body).not_to include("1234")
+          within ".table-striped" do
+            expect(response).not_to have_content("32")
+            expect(response).not_to have_content("29")
+          end
           expect(response.body).to     include("2015-06-29")
           expect(response.body).to     include("2015-07-05")
         end
@@ -111,14 +113,14 @@ describe LeaderboardController, type: :controller do
       let(:user) { FactoryGirl.create :user }
       let!(:leaderboard_1) {
         FactoryGirl.create :user_leaderboard,
-                           total_minutes: 1133,
+                           total_minutes: 1920,
                            start_date: Time.new(2015, 07, 6, 0, 0, 0).to_date,
                            end_date: Time.new(2015, 07, 12, 0, 0, 0).to_date,
                            user: user
       }
       let!(:leaderboard_2) {
         FactoryGirl.create :user_leaderboard,
-                           total_minutes: 1234,
+                           total_minutes: 1740,
                            start_date: Time.new(2015, 07, 13, 0, 0, 0).to_date,
                            end_date: Time.new(2015, 07, 19, 0, 0, 0).to_date,
                            user: user
@@ -129,8 +131,8 @@ describe LeaderboardController, type: :controller do
           get :users
 
           expect(response.status).to   eq(200)
-          expect(response.body).to     include("1234")
-          expect(response.body).not_to include("1133")
+          expect(response.body).to     include("29")
+          expect(response.body).not_to include("32")
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -162,8 +164,8 @@ describe LeaderboardController, type: :controller do
           get :users, weeks_ago: 0
 
           expect(response.status).to   eq(200)
-          expect(response.body).to     include("1234")
-          expect(response.body).not_to include("1133")
+          expect(response.body).to     include("29")
+          expect(response.body).not_to include("32")
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -174,8 +176,8 @@ describe LeaderboardController, type: :controller do
           get :users, weeks_ago: 1
 
           expect(response.status).to  eq(200)
-          expect(response.body).to     include("1133")
-          expect(response.body).not_to include("1234")
+          expect(response.body).to     include("32")
+          expect(response.body).not_to include("29")
           expect(response.body).to     include("2015-07-06")
           expect(response.body).to     include("2015-07-12")
         end
@@ -186,8 +188,11 @@ describe LeaderboardController, type: :controller do
           get :users, weeks_ago: 2
 
           expect(response.status).to eq(200)
-          expect(response.body).not_to include("1133")
-          expect(response.body).not_to include("1234")
+          within ".table-striped" do
+            expect(response).not_to have_content("32")
+            expect(response).not_to have_content("29")
+          end
+
           expect(response.body).to     include("2015-06-29")
           expect(response.body).to     include("2015-07-05")
         end
