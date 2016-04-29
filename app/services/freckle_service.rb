@@ -27,8 +27,7 @@ class FreckleService
 
     if last = result.try(:link).try(:last)
       last_page = last.match(/page=(\d+)/)[1].to_i
-      pages = (2..last_page)
-      pages.each do |page|
+      (2..last_page).each do |page|
         result = client.get_entries(from: start_date, to: end_date, page: page)
         save_entries_for(result)
       end
