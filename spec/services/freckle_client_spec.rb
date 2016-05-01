@@ -54,6 +54,32 @@ describe FreckleService do
           described_class.import_entries(start_date, end_date)
         end.to change(Entry, :count).by(0)
       end
+
+      context "with more than one page" do
+        let(:freckle_entry_2) do
+          double("Freckle::Entry", id: 2, description: "Quack!", minutes: 120,
+                                   date: Time.zone.now, user: freckle_user,
+                                   project: freckle_project)
+        end
+        let(:freckle_links) { double("Freckle::Record", last: "/v2/page=2") }
+        let(:freckle_result) do
+          double("Freckle::Record", link: freckle_links)
+        end
+
+        before do
+          allow(freckle_result).to(
+            receive(:each).and_yield(freckle_entry).and_yield(freckle_entry_2))
+
+          allow(described_class.client).to(
+            receive(:get_entries).and_return(freckle_result).twice)
+        end
+
+        it "saves all entries in every page" do
+          expect do
+            described_class.import_entries(start_date, end_date)
+          end.to change(Entry, :count).by(2)
+        end
+      end
     end
   end
 end
