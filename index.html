@@ -16,9 +16,10 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="header">Pecas</h1>
-        <p class="header">Leaderboards for Freckle (and Alarm system!)</p>
-
+        <div id="logo">
+          <h1>Pecas</h1>
+          <h2 class="header">Leaderboards for Freckle (and Alarm system!)</p>
+        </div>
         <ul>
           <li class="download"><a class="buttons" href="https://github.com/ombulabs/pecas/zipball/master">Download ZIP</a></li>
           <li class="download"><a class="buttons" href="https://github.com/ombulabs/pecas/tarball/master">Download TAR</a></li>
@@ -30,13 +31,17 @@
 
       </header>
       <section>
-        <h1>
-<a id="pecas-by-ombu-labs" class="anchor" href="#pecas-by-ombu-labs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pecas, by Ombu Labs</h1>
 
 <p><a href="https://travis-ci.org/ombulabs/pecas"><img src="https://travis-ci.org/ombulabs/pecas.svg?branch=master" alt="Build Status"></a>
 <a href="https://codeclimate.com/github/ombulabs/pecas"><img src="https://codeclimate.com/github/ombulabs/pecas/badges/gpa.svg" alt="Code Climate"></a></p>
 
-<p>Pecas is a time tracking leaderboard for <a href="http://letsfreckle.com">http://letsfreckle.com</a>.</p>
+<p class="intro">Pecas is a time tracking leaderboard for <a href="http://letsfreckle.com">http://letsfreckle.com</a>.</p>
+<h3>By Team</h3>
+<p>You can view the logged hours by every member of the team</p>
+<img class="shots" src="images/by_team.jpg" alt="by Team"/>
+<h3>By Project</h3>
+<p>You can view the logged hours per project</p>
+<img class="shots" src="images/by_project.jpg" alt="by Project"/>
 
 <h2>
 <a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h2>
@@ -117,12 +122,30 @@ bundle exec rvmsudo rails server
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
 <p><a href="https://github.com/ombulabs/pecas/blob/master/LICENSE">LICENSE</a></p>
+
+<h2>
+<a id="styleguide" class="anchor" href="#styleguide" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Style Guide</h2>
+<p>Design Guidelines</p>
+<h3>Logo</h3>
+<img class="logo-img" src="images/pecas-logo.svg" alt="Pecas Logo"/>
+<h3>Color</h3>
+  <ul id="colors">
+    <li class="black"><span>#333333</span></li>
+    <li class="turquoise"><span>#80D9DF</span></li>
+    <li class="light-turquoise"><span>#D9F1F3</span></li>
+    <li class="grey"><span>#8C8C8C</span></li>
+    <li class="light-grey"><span>#f5f5f5</span></li>
+  </ul>
+  <h3>Typography</h3>
+  <p class="type light">Oxygen Light</p>
+  <p class="type normal">Oxygen Normal</p>
+  <p class="type bold">Oxygen Bold</p>
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+
   </body>
 </html>
