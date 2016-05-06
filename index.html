@@ -1,23 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Pecas</title>
-    <link rel="stylesheet" href="style.css" media="screen">
-    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700,300" rel="stylesheet" type="text/css">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pecas by ombulabs</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
     <div class="wrapper">
-      <div id="logo">
-        <h1>Pecas</h1>
-        <h2>Leaderboards for Freckle</h2>
-      </div>
-      <h3>By Team</h3>
-      <p>You can view the logged hours by every member of the team</p>
-      <img src="images/by_team.jpg" alt="by Team"/>
-      <h3>By Project</h3>
-      <p>You can view the logged hours per project</p>
-      <img src="images/by_project.jpg" alt="by Team"/>
+      <header>
+        <h1 class="header">Pecas</h1>
+        <p class="header">Leaderboards for Freckle (and Alarm system!)</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/ombulabs/pecas/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/ombulabs/pecas/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/ombulabs/pecas">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/ombulabs">ombulabs</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="pecas-by-ombu-labs" class="anchor" href="#pecas-by-ombu-labs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pecas, by Ombu Labs</h1>
+
+<p><a href="https://travis-ci.org/ombulabs/pecas"><img src="https://travis-ci.org/ombulabs/pecas.svg?branch=master" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/ombulabs/pecas"><img src="https://codeclimate.com/github/ombulabs/pecas/badges/gpa.svg" alt="Code Climate"></a></p>
+
+<p>Pecas is a time tracking leaderboard for <a href="http://letsfreckle.com">http://letsfreckle.com</a>.</p>
+
+<h2>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h2>
+
+<p>To install Pecas in a development environment, you can follow the next steps:</p>
+
+<h3>
+<a id="ruby" class="anchor" href="#ruby" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ruby</h3>
+
+<pre><code>rvm install '2.1.2'
+</code></pre>
+
+<h3>
+<a id="first-time-only" class="anchor" href="#first-time-only" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>First-time only</h3>
+
+<p>Clone the repo</p>
+
+<pre><code>git clone git@github.com:ombulabs/pecas.git
+</code></pre>
+
+<p>Go to the project path</p>
+
+<pre><code>cd path/to/pecas
+</code></pre>
+
+<p>Copy the YML database config</p>
+
+<pre><code>cp config/database.yml.sample config/database.yml
+</code></pre>
+
+<p>Set up the database</p>
+
+<pre><code>bundle exec rake db:migrate
+</code></pre>
+
+<p>Install dependencies</p>
+
+<pre><code>bundle install
+</code></pre>
+
+<p>Setup and configure your <code>.env</code></p>
+
+<pre><code>cp .env.sample .env
+</code></pre>
+
+<p>You can setup your <code>COUNTRY_CODE</code> environment variable with an ISO 3166 country code.
+Otherwise the E-Mails will be sent on holidays.</p>
+
+<h2>
+<a id="start" class="anchor" href="#start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Start</h2>
+
+<pre><code>rvm use 2.1.2@pecas
+bundle exec rvmsudo rails server
+</code></pre>
+
+<h2>
+<a id="import" class="anchor" href="#import" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Import</h2>
+
+<p>Import the entries with:</p>
+
+<pre><code>rake import:entries
+</code></pre>
+
+<p>Calculate the leaderboards with:</p>
+
+<pre><code>rake calc:leaderboards
+</code></pre>
+
+<h2>
+<a id="demo-data" class="anchor" href="#demo-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo data</h2>
+
+<p>Generate demo data with:</p>
+
+<pre><code>rake demo_data:setup
+</code></pre>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="https://github.com/ombulabs/pecas/blob/master/LICENSE">LICENSE</a></p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
