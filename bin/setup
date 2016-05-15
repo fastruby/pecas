@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cp .ruby-version.sample .ruby-version
+cd .
+cp .env.sample .env
+bundle
+bundle exec rake db:create db:migrate
