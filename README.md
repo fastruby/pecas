@@ -1,57 +1,37 @@
-Pecas, by Ombu Labs
-========
+# Pecas: Leaderboards for [Freckle](http://letsfreckle.com/)
 
 [![Build Status](https://travis-ci.org/ombulabs/pecas.svg?branch=master)](https://travis-ci.org/ombulabs/pecas)
 [![Code Climate](https://codeclimate.com/github/ombulabs/pecas/badges/gpa.svg)](https://codeclimate.com/github/ombulabs/pecas)
 
-Pecas is a time tracking leaderboard for [http://letsfreckle.com](http://letsfreckle.com).
+Pecas is a time tracking leaderboard for
+[http://letsfreckle.com](http://letsfreckle.com).
 
-Setup
------
+## Setup
 
 To install Pecas in a development environment, you can follow the next steps:
 
-### Ruby
-
-    rvm install '2.1.2'
-
 ### First-time only
 
-Clone the repo
-
     git clone git@github.com:ombulabs/pecas.git
-
-Go to the project path
-
     cd path/to/pecas
 
-Copy the YML database config
+Copy the database.yml config:
 
     cp config/database.yml.sample config/database.yml
 
-Set up the database
+Run the setup script:
 
-    bundle exec rake db:migrate
+    ./bin/setup
 
-Install dependencies
+You must setup your `FRECKLE_TOKEN` in the `.env` file. You can setup your
+`COUNTRY_CODE` environment variable with an ISO 3166 country code. Otherwise
+the emails will be sent on holidays.
 
-    bundle install
+## Start
 
-Setup and configure your `.env`
+    rvmsudo rails server
 
-    cp .env.sample .env
-
-You can setup your `COUNTRY_CODE` environment variable with an ISO 3166 country code.
-Otherwise the E-Mails will be sent on holidays.
-
-Start
------
-
-    rvm use 2.1.2@pecas
-    bundle exec rvmsudo rails server
-
-Import
-------
+## Import
 
 Import the entries with:
 
@@ -61,15 +41,13 @@ Calculate the leaderboards with:
 
     rake calc:leaderboards
 
-Demo data
----------
+## Demo Data
 
 Generate demo data with:
 
     rake demo_data:setup
 
-License
------
+## License
 
 [License]
 
