@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.5.1'
+gem 'rails', '~> 4.2'
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'holidays'
 
+gem 'json', '~> 1.8.6'
+
 group :production do
   gem 'pg'
 end
@@ -39,7 +41,7 @@ end
 group :development do
   gem 'pry-byebug', platform: [:ruby_20], require: false
   gem "byebug"
-  gem 'sqlite3'
+  gem "sqlite3", "~> 1.3.6"
   gem 'spring'
 end
 
