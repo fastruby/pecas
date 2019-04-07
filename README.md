@@ -1,10 +1,10 @@
-# Pecas: Leaderboards for [Freckle](http://letsfreckle.com/)
+# Pecas: Leaderboards for [Noko](https://nokotime.com)
 
 [![Build Status](https://travis-ci.org/ombulabs/pecas.svg?branch=master)](https://travis-ci.org/ombulabs/pecas)
 [![Code Climate](https://codeclimate.com/github/ombulabs/pecas/badges/gpa.svg)](https://codeclimate.com/github/ombulabs/pecas)
 
 Pecas is a time tracking leaderboard for
-[http://letsfreckle.com](http://letsfreckle.com).
+[https://nokotime.com](https://nokotime.com).
 
 ## Setup
 
@@ -17,10 +17,6 @@ To install Pecas in a development environment, you can follow the next steps:
 
 Copy the database.yml config:
 
-    cp config/database.yml.sample config/database.yml
-
-Run the setup script:
-
     ./bin/setup
 
 You must setup your `FRECKLE_TOKEN` in the `.env` file. You can setup your
@@ -29,7 +25,7 @@ the emails will be sent on holidays.
 
 ## Start
 
-    rvmsudo rails server
+    rails server
 
 ## Import
 
