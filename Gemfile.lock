@@ -103,7 +103,7 @@ GEM
     multi_json (1.13.1)
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
-    pg (1.1.4)
+    pg (0.21.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -213,7 +213,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   json (~> 1.8.6)
-  pg
+  pg (~> 0.15)
   pry-byebug
   rails (~> 4.2)
   rails_12factor
