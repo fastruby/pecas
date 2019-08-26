@@ -3,8 +3,8 @@ class Reminder < ApplicationMailer
 
   def send_to(user)
     @user = user
-    @url = "http://#{ENV['FRECKLE_ACCOUNT_HOST']}.letsfreckle.com"
+    @url = "http://#{ENV['FRECKLE_ACCOUNT_HOST']}.nokotime.com"
 
-    mail(to: @user.email, subject: 'Freckle Reminder')
+    mail(to: @user.email, subject: 'Noko Reminder')
   end
 end
