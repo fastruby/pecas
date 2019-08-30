@@ -32,7 +32,7 @@ class NokoService
         save_entries_for(result)
       end
     end
-  end
+end
 
   private
 
