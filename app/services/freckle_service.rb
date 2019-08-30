@@ -1,9 +1,9 @@
-require "freckle"
+require 'noko'
 
-class FreckleService
+class NokoService
 
   def self.client
-    @client ||= Freckle::Client.new(token: ENV["FRECKLE_TOKEN"])
+    @client ||= Noko::Client.new(token: ENV["NOKO_TOKEN"])
   end
 
   def self.import_users

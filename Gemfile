@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 gem 'dotenv-rails'
-gem 'freckles', '~> 1.1.0'
+gem 'noko'
 
 gem 'twitter-bootstrap-rails'
 

@@ -19,7 +19,7 @@ Copy the database.yml config:
 
     ./bin/setup
 
-You must setup your `FRECKLE_TOKEN` in the `.env` file. You can setup your
+You must setup your `NOKO_TOKEN` in the `.env` file. You can setup your
 `COUNTRY_CODE` environment variable with an ISO 3166 country code. Otherwise
 the emails will be sent on holidays.
 

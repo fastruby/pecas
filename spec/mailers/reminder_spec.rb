@@ -17,7 +17,7 @@ describe 'Reminder Mailer' do
   end
 
   it "should include link in body" do
-    allow(ENV).to receive(:[]).with("FRECKLE_ACCOUNT_HOST").and_return("foobar")
+    allow(ENV).to receive(:[]).with("NOKO_ACCOUNT_HOST").and_return("foobar")
     expect(email).to have_body_text('http://foobar.nokotime.com')
   end
 
