@@ -67,7 +67,6 @@ GEM
     factory_girl_rails (4.9.0)
       factory_girl (~> 4.9.0)
       railties (>= 3.0.0)
-    freckles (1.1.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hike (1.2.3)
@@ -101,6 +100,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    noko (1.5.0)
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
     pg (0.21.0)
@@ -208,11 +208,11 @@ DEPENDENCIES
   dotenv-rails
   email_spec
   factory_girl_rails
-  freckles (~> 1.1.0)
   holidays
   jbuilder (~> 2.0)
   jquery-rails
   json (~> 1.8.6)
+  noko
   pg (~> 0.15)
   pry-byebug
   rails (~> 4.2)

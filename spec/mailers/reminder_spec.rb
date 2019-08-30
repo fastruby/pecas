@@ -13,12 +13,12 @@ describe 'Reminder Mailer' do
   end
 
   it "should have correct subject" do
-    expect(email).to have_subject('Freckle Reminder')
+    expect(email).to have_subject('Noko Reminder')
   end
 
   it "should include link in body" do
-    allow(ENV).to receive(:[]).with("FRECKLE_ACCOUNT_HOST").and_return("foobar")
-    expect(email).to have_body_text('http://foobar.letsfreckle.com')
+    allow(ENV).to receive(:[]).with("NOKO_ACCOUNT_HOST").and_return("foobar")
+    expect(email).to have_body_text('http://foobar.nokotime.com')
   end
 
   it "should include salutation in body" do
