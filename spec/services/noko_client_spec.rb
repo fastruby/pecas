@@ -7,7 +7,7 @@ describe NokoService do
 
   describe "#import_entries" do
     let(:start_date) { Time.now.beginning_of_week.to_date }
-    let(:end_date) { Time.now.end_of_week.to_date }
+    let(:end_date) { Time.now.next_week(:saturday).to_date }
 
     context "without any new entries" do
       before do
