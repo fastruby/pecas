@@ -23,29 +23,38 @@ class NokoService
 
   def self.import_entries(start_date, end_date)
     result = client.get_entries(from: start_date, to: end_date)
-    save_entries_for(result)
+    missing_projects = []
+    save_entries_for(result, missing_projects)
 
     if last = result.try(:link).try(:last)
       last_page = last.match(/page=(\d+)/)[1].to_i
       (2..last_page).each do |page|
         result = client.get_entries(from: start_date, to: end_date, page: page)
-        save_entries_for(result)
+        save_entries_for(result, missing_projects)
       end
+    end
+    if missing_projects.present?
+      puts "The following time entries must be updated before import: "
+      missing_projects.each{ |missing| puts missing }
     end
 end
 
   private
 
-  def self.save_entries_for(result)
+  def self.save_entries_for(result, missing_projects)
     result.each do |entry|
       e1 = Entry.find_or_create_by(id: entry.id)
-      e1.update_columns(
-        description: entry.description,
-        minutes:     entry.minutes,
-        date:        entry.date,
-        user_id:     entry.user.id,
-        project_id:  entry.project.id
-      )
+      unless entry.project.nil?
+        e1.update_columns(
+          description: entry.description,
+          minutes:     entry.minutes,
+          date:        entry.date,
+          user_id:     entry.user.id,
+          project_id:  entry.project.id
+        )
+      else
+        missing_projects << "On #{entry.date}, #{entry.user.first_name} created entry without project of #{entry.minutes}min with description of #{entry.description}"
+      end
     end
   end
 end
