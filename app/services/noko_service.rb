@@ -29,12 +29,12 @@ class NokoService
     if last = result.try(:link).try(:last)
       last_page = last.match(/page=(\d+)/)[1].to_i
       (2..last_page).each do |page|
-        result = client.get_entries(from: start_date, to: end_date, page: page)
+        result = client.get_entries(from: start_date, to: end_date, per_page: 1000)
         save_entries_for(result, missing_projects)
       end
     end
     if missing_projects.present?
-      puts "The following time entries must be updated before import: "
+      puts "The following time entries are missing a project. They must be updated before import: "
       missing_projects.each{ |missing| puts missing }
     end
 end
