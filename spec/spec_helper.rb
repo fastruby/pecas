@@ -1,12 +1,11 @@
 if ENV['COVERAGE'] == "true"
-  require 'codeclimate-test-reporter'
   require 'simplecov'
   require 'coveralls'
+  Coveralls.wear!
 
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
     Coveralls::SimpleCov::Formatter,
-    SimpleCov::Formatter::HTMLFormatter,
-    CodeClimate::TestReporter::Formatter
+    SimpleCov::Formatter::HTMLFormatter
   ]
   SimpleCov.start 'rails'
 end
