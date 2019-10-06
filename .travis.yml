@@ -4,6 +4,7 @@ rvm:
 env:
   global:
     - CC_TEST_REPORTER_ID=cf3d101c4575090a728a9d8a3a84e99193727f1f447f7ea378156928d055e05d
+    - COVERAGE=true
 before_script:
   - cp config/database.yml.sample config/database.yml
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
