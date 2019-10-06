@@ -52,6 +52,9 @@ group :test do
   gem 'rspec-rails'
   gem 'email_spec'
   gem 'factory_girl_rails'
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
+  gem 'coveralls', require: false
 end
 
 # Use unicorn as the app server
