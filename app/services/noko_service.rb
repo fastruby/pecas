@@ -22,7 +22,7 @@ class NokoService
   end
 
   def self.import_entries(start_date, end_date)
-    result = client.get_entries(from: start_date, to: end_date)
+    result = client.get_entries(from: start_date, to: end_date, per_page: 1000)
     missing_projects = []
     save_entries_for(result, missing_projects)
 
