@@ -71,7 +71,7 @@ describe NokoService do
             receive(:each).and_yield(noko_entry).and_yield(noko_entry_2))
 
           allow(described_class.client).to(
-            receive(:get_entries).and_return(noko_result).twice)
+            receive(:get_entries).and_return(noko_result).at_least(:twice))
         end
 
         it "saves all entries in every page" do
