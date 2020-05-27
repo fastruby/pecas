@@ -57,6 +57,12 @@ group :test do
   gem 'coveralls', require: false
 end
 
+group :development, :test do
+  gem 'vcr'
+  gem 'webmock'
+  gem 'faraday'
+end
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

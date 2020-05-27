@@ -1,0 +1,300 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-25&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.6
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 May 2020 19:41:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '35798'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31>;
+        rel="next"
+      X-Runtime:
+      - '70'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26123774,"date":"2020-05-27","billable":false,"minutes":60,"description":"Hello!","created_at":"2020-05-27T17:57:33Z","updated_at":"2020-05-27T17:57:33Z","approved_at":null,"source_url":null,"user":{"id":32357,"email":"email@example.com","first_name":"Jonh","last_name":"Doe","profile_image_url":"","url":""},"approved_by":null,"tags":[{"id":1261198,"name":"my-tag","billable":true,"formatted_name":"#my-tag","url":""}],"project":{"id":267511,"name":"Project1","billing_increment":15,"enabled":true,"billable":false,"color":"#ef63a2","url":""},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"","invoiced_outside_of_freckle_url":"","invoiced_outside_of_noko_url":"","approved_url":"","unapproved_url":""}]'
+    http_version: null
+  recorded_at: Wed, 27 May 2020 19:41:37 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-25&page=1&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.6
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 May 2020 19:41:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '35798'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31>;
+        rel="next"
+      X-Runtime:
+      - '64'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26123774,"date":"2020-05-27","billable":false,"minutes":60,"description":"Hello!","created_at":"2020-05-27T17:57:33Z","updated_at":"2020-05-27T17:57:33Z","approved_at":null,"source_url":null,"user":{"id":32357,"email":"email@example.com","first_name":"Jhon","last_name":"Doe","profile_image_url":"","url":""},"approved_by":null,"tags":[{"id":1261198,"name":"my-tag","billable":true,"formatted_name":"#my-tag","url":""}],"project":{"id":267511,"name":"Project1","billing_increment":15,"enabled":true,"billable":false,"color":"#ef63a2","url":""},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"","invoiced_outside_of_freckle_url":"","invoiced_outside_of_noko_url":"","approved_url":"","unapproved_url":""}]'
+    http_version: null
+  recorded_at: Wed, 27 May 2020 19:41:37 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.6
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 May 2020 19:41:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '14391'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-25&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-25&page=1&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '51'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26115396,"date":"2020-05-27","billable":false,"minutes":60,"description":"Hello!","created_at":"2020-05-27T17:57:33Z","updated_at":"2020-05-27T17:57:33Z","approved_at":null,"source_url":null,"user":{"id":32357,"email":"email@example.com","first_name":"Jhon","last_name":"Doe","profile_image_url":"","url":""},"approved_by":null,"tags":[{"id":1261198,"name":"my-tag","billable":true,"formatted_name":"#my-tag","url":""}],"project":{"id":267511,"name":"Project1","billing_increment":15,"enabled":true,"billable":false,"color":"#ef63a2","url":""},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"","invoiced_outside_of_freckle_url":"","invoiced_outside_of_noko_url":"","approved_url":"","unapproved_url":""}]'
+    http_version: null
+  recorded_at: Wed, 27 May 2020 19:41:38 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-25&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.6
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 May 2020 19:41:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '35798'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31>;
+        rel="next"
+      X-Runtime:
+      - '85'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26123774,"date":"2020-05-27","billable":false,"minutes":60,"description":"One
+        on one with Nacho #team #oneonones #CEO","created_at":"2020-05-27T17:57:33Z","updated_at":"2020-05-27T17:57:33Z","approved_at":null,"source_url":null,"user":{"id":32357,"email":"ernesto@ombulabs.com","first_name":"Ernesto","last_name":"Tagwerker","profile_image_url":"https://cdn.nokotime.com/a/1467820536/images/avatars/0003/9569/sme4ro8086n07slti7pi7o3ser4ekwr.png","url":"https://api.nokotime.com/v2/users/32357"},"approved_by":null,"tags":[{"id":1261198,"name":"CEO","billable":true,"formatted_name":"#CEO","url":"https://api.nokotime.com/v2/tags/1261198"},{"id":1281993,"name":"oneonones","billable":true,"formatted_name":"#oneonones","url":"https://api.nokotime.com/v2/tags/1281993"},{"id":838826,"name":"team","billable":true,"formatted_name":"#team","url":"https://api.nokotime.com/v2/tags/838826"}],"project":{"id":267511,"name":"OmbuLabs","billing_increment":15,"enabled":true,"billable":false,"color":"#ef63a2","url":"https://api.nokotime.com/v2/projects/267511"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26123774","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26123774/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26123774/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26123774/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26123774/unapproved"}]'
+    http_version: null
+  recorded_at: Wed, 27 May 2020 19:41:39 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-25&page=1&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.6
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 May 2020 19:41:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '35798'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31>;
+        rel="next"
+      X-Runtime:
+      - '62'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26123774,"date":"2020-05-27","billable":false,"minutes":60,"description":"One
+        on one with Nacho #team #oneonones #CEO","created_at":"2020-05-27T17:57:33Z","updated_at":"2020-05-27T17:57:33Z","approved_at":null,"source_url":null,"user":{"id":32357,"email":"ernesto@ombulabs.com","first_name":"Ernesto","last_name":"Tagwerker","profile_image_url":"https://cdn.nokotime.com/a/1467820536/images/avatars/0003/9569/sme4ro8086n07slti7pi7o3ser4ekwr.png","url":"https://api.nokotime.com/v2/users/32357"},"approved_by":null,"tags":[{"id":1261198,"name":"CEO","billable":true,"formatted_name":"#CEO","url":"https://api.nokotime.com/v2/tags/1261198"},{"id":1281993,"name":"oneonones","billable":true,"formatted_name":"#oneonones","url":"https://api.nokotime.com/v2/tags/1281993"},{"id":838826,"name":"team","billable":true,"formatted_name":"#team","url":"https://api.nokotime.com/v2/tags/838826"}],"project":{"id":267511,"name":"OmbuLabs","billing_increment":15,"enabled":true,"billable":false,"color":"#ef63a2","url":"https://api.nokotime.com/v2/projects/267511"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26123774","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26123774/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26123774/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26123774/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26123774/unapproved"}]'
+    http_version: null
+  recorded_at: Wed, 27 May 2020 19:41:39 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-25&page=2&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.6
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 May 2020 19:41:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '14391'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-25&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-25&page=1&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '50'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26115396,"date":"2020-05-26","billable":false,"minutes":75,"description":"Mastermind
+        call with Nate and Chris. #rails #sales* #marketing","created_at":"2020-05-26T21:25:04Z","updated_at":"2020-05-26T21:25:04Z","approved_at":null,"source_url":null,"user":{"id":32357,"email":"ernesto@ombulabs.com","first_name":"Ernesto","last_name":"Tagwerker","profile_image_url":"https://cdn.nokotime.com/a/1467820536/images/avatars/0003/9569/sme4ro8086n07slti7pi7o3ser4ekwr.png","url":"https://api.nokotime.com/v2/users/32357"},"approved_by":null,"tags":[{"id":1009259,"name":"marketing","billable":true,"formatted_name":"#marketing","url":"https://api.nokotime.com/v2/tags/1009259"},{"id":1324835,"name":"rails","billable":true,"formatted_name":"#rails","url":"https://api.nokotime.com/v2/tags/1324835"},{"id":651416,"name":"sales","billable":false,"formatted_name":"#sales*","url":"https://api.nokotime.com/v2/tags/651416"}],"project":{"id":267511,"name":"OmbuLabs","billing_increment":15,"enabled":true,"billable":false,"color":"#ef63a2","url":"https://api.nokotime.com/v2/projects/267511"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26115396","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26115396/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26115396/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26115396/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26115396/unapproved"}]'
+    http_version: null
+  recorded_at: Wed, 27 May 2020 19:41:40 GMT
+recorded_with: VCR 5.1.0

@@ -28,6 +28,17 @@ require 'email_spec'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+require "webmock"
+require "webmock/rspec"
+require "vcr"
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.define_cassette_placeholder('X-Nokotoken', :user_cassette) { User.last.id }
+  config.filter_sensitive_data('$NOKO_TOKEN') { ENV['NOKO_TOKEN'] }
+end
+
 RSpec.configure do |config|
   config.include EmailSpec::Helpers
   config.include EmailSpec::Matchers
@@ -55,4 +66,9 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  config.around(:each, :vcr) do |example|
+    name = example.metadata[:full_description].split(/\s+/, 2).join("/").gsub(/[^\w\/]+/, "_")
+    VCR.use_cassette(name) { example.call }
+  end
 end
