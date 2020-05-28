@@ -63,6 +63,16 @@ describe NokoService, :vcr do
           end.to change(Entry, :count).by(2)
         end
       end
+
+      context "when importing entries" do
+        let(:start_date) { Time.now.beginning_of_week.to_date - 1.week }
+
+        it "saves entries from the past two weeks" do
+          expect do
+            described_class.import_entries(start_date, end_date)
+          end.to change(Entry, :count).by(3)
+        end
+      end
     end
   end
 end

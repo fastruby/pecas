@@ -38,6 +38,7 @@ end
 
   def self.save_entries_for(result)
     result.each do |entry|
+      next if entry.project.nil?
       e1 = Entry.find_or_create_by(id: entry.id)
       e1.update_columns(
         description: entry.description,
