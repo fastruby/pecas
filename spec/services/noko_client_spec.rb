@@ -1,10 +1,6 @@
 require "rails_helper"
 
-describe NokoService do
-  before do
-    stub_const("ENV", {"NOKO_TOKEN" => "foobar"})
-  end
-
+describe NokoService, :vcr do
   describe "#import_entries" do
     let(:start_date) { Time.now.beginning_of_week.to_date }
     let(:end_date) { Time.now.end_of_week.to_date }
@@ -30,15 +26,10 @@ describe NokoService do
                                  project: noko_project)
       end
 
-      before do
-        allow(described_class.client).to(
-          receive(:get_entries).and_return([noko_entry]))
-      end
-
       it "creates the new entries in the database" do
         expect do
           described_class.import_entries(start_date, end_date)
-        end.to change(Entry, :count).by(1)
+        end.to change(Entry, :count).by(2)
 
         entry = Entry.last
         expect(entry.description).to eql("Hello!")
@@ -48,7 +39,7 @@ describe NokoService do
       it "doesn't create entries again if they already exist" do
         expect do
           described_class.import_entries(start_date, end_date)
-        end.to change(Entry, :count).by(1)
+        end.to change(Entry, :count).by(2)
 
         expect do
           described_class.import_entries(start_date, end_date)
@@ -66,18 +57,20 @@ describe NokoService do
           double("Noko::Record", link: noko_links)
         end
 
-        before do
-          allow(noko_result).to(
-            receive(:each).and_yield(noko_entry).and_yield(noko_entry_2))
-
-          allow(described_class.client).to(
-            receive(:get_entries).and_return(noko_result).twice)
-        end
-
         it "saves all entries in every page" do
           expect do
             described_class.import_entries(start_date, end_date)
           end.to change(Entry, :count).by(2)
+        end
+      end
+
+      context "when importing entries" do
+        let(:start_date) { Time.now.beginning_of_week.to_date - 1.week }
+
+        it "saves entries from the past two weeks" do
+          expect do
+            described_class.import_entries(start_date, end_date)
+          end.to change(Entry, :count).by(3)
         end
       end
     end

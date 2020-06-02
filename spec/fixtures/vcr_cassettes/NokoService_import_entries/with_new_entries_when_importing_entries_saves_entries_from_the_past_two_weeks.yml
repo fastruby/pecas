@@ -1,0 +1,522 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '34465'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=2&to=2020-05-31>;
+        rel="next"
+      X-Runtime:
+      - '59'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26060943,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:09 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '34465'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=2&to=2020-05-31>;
+        rel="next"
+      X-Runtime:
+      - '58'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26060943,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:09 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&page=2&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '35588'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=3&to=2020-05-31>;
+        rel="next", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '65'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: ASCII-8BIT
+      encoding: UTF-8
+      string: '[{"id":26060943,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:10 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&page=3&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '34104'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=4&to=2020-05-31>;
+        rel="next", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=2&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '64'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: ASCII-8BIT
+      encoding: UTF-8
+      string: '[{"id":26060943,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:11 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&page=4&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '33673'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=5&to=2020-05-31>;
+        rel="next", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=3&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '72'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: ASCII-8BIT
+      encoding: UTF-8
+      string: '[{"id":26060943,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:12 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&page=5&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '33355'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=6&to=2020-05-31>;
+        rel="next", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=4&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '67'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: ASCII-8BIT
+      encoding: UTF-8
+      string: '[{"id":26060943,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:13 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&page=6&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '33679'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=7&to=2020-05-31>;
+        rel="next", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=5&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '64'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: ASCII-8BIT
+      encoding: UTF-8
+      string: '[{"id":26060944,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:13 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&page=7&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '32940'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=8&to=2020-05-31>;
+        rel="next", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=6&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '59'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26060943,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:14 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&page=8&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '33367'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="last", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31>;
+        rel="next", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=7&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '58'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26060943,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:15 GMT
+- request:
+    method: get
+    uri: https://api.nokotime.com/v2/entries?from=2020-05-18&page=9&to=2020-05-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - noko/1.5.0 ruby/2.4.5
+      X-Nokotoken:
+      - "$NOKO_TOKEN"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 May 2020 21:30:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '19639'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      Link:
+      - <https://api.nokotime.com/v2/entries?from=2020-05-18&page=1&to=2020-05-31>;
+        rel="first", <https://api.nokotime.com/v2/entries?from=2020-05-18&page=8&to=2020-05-31>;
+        rel="prev"
+      X-Runtime:
+      - '55'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+    body:
+      encoding: UTF-8
+      string: '[{"id":26060945,"date":"2020-05-18","billable":true,"minutes":225,"description":"PR-15355","created_at":"2020-05-18T22:48:10Z","updated_at":"2020-05-22T21:09:24Z","approved_at":null,"source_url":null,"user":{"id":71097,"email":"robert@ombulabs.com","first_name":"Robert","last_name":"Dormer","profile_image_url":"","url":"https://api.nokotime.com/v2/users/71097"},"approved_by":null,"tags":[],"project":{"id":444155,"name":"Power
+        HRG","billing_increment":15,"enabled":true,"billable":true,"color":"#0f6953","url":"https://api.nokotime.com/v2/projects/444155"},"invoiced":null,"invoiced_at":null,"invoice":null,"import":null,"url":"https://api.nokotime.com/v2/entries/26060943","invoiced_outside_of_freckle_url":"https://api.nokotime.com/v2/entries/26060943/invoiced_outside_of_freckle","invoiced_outside_of_noko_url":"https://api.nokotime.com/v2/entries/26060943/marked_as_invoiced","approved_url":"https://api.nokotime.com/v2/entries/26060943/approved","unapproved_url":"https://api.nokotime.com/v2/entries/26060943/unapproved"}]'
+    http_version: null
+  recorded_at: Thu, 28 May 2020 21:30:16 GMT
+recorded_with: VCR 5.1.0

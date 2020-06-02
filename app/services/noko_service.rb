@@ -27,7 +27,7 @@ class NokoService
 
     if last = result.try(:link).try(:last)
       last_page = last.match(/page=(\d+)/)[1].to_i
-      (2..last_page).each do |page|
+      (1..last_page).each do |page|
         result = client.get_entries(from: start_date, to: end_date, page: page)
         save_entries_for(result)
       end
@@ -38,6 +38,7 @@ end
 
   def self.save_entries_for(result)
     result.each do |entry|
+      next if entry.project.nil?
       e1 = Entry.find_or_create_by(id: entry.id)
       e1.update_columns(
         description: entry.description,
