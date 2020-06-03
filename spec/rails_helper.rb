@@ -37,6 +37,12 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.define_cassette_placeholder('X-Nokotoken', :user_cassette) { User.last.id }
   config.filter_sensitive_data('$NOKO_TOKEN') { ENV['NOKO_TOKEN'] }
+  config.default_cassette_options = {
+    match_requests_on: [
+      :method,
+      VCR.request_matchers.uri_without_params(:from, :to)
+    ]
+  }
 end
 
 RSpec.configure do |config|
