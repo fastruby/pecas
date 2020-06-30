@@ -48,3 +48,10 @@ Generate demo data with:
 [License]
 
   [license]: LICENSE
+
+## Sponsorship
+
+![FastRuby.io | Rails Upgrade Services](https://github.com/fastruby/pecas/raw/master/app/assets/images/fastruby-logo.png)
+
+
+`Pecas` is maintained and funded by [FastRuby.io](https://fastruby.io). The names and logos for FastRuby.io are trademarks of The Lean Software Boutique LLC.
