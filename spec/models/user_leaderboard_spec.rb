@@ -38,7 +38,7 @@ describe UserLeaderboard do
       it "is not generating the leaderboard" do
         expect do
           UserLeaderboard.calculate
-        end.to change(UserLeaderboard.where(total_minutes: 0), :count).by(1)
+        end.to change(UserLeaderboard.where(total_minutes: 0), :count).by(2)
       end
     end
 
@@ -49,7 +49,7 @@ describe UserLeaderboard do
         expect { UserLeaderboard.calculate }.to change(
           UserLeaderboard.where(total_minutes: 0),
           :count
-        ).by(0)
+        ).by(1)
 
         expect(UserLeaderboard.where(
           total_minutes: entry.minutes).count).to eq(1)

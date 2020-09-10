@@ -43,7 +43,6 @@ end
 
 group :development do
   gem 'pry-byebug', platform: [:ruby_20], require: false
-  gem "byebug"
   gem "sqlite3", "~> 1.3.6"
   gem 'spring'
 end
@@ -61,6 +60,7 @@ group :development, :test do
   gem 'vcr'
   gem 'webmock'
   gem 'faraday'
+  gem "byebug"
 end
 
 # Use unicorn as the app server

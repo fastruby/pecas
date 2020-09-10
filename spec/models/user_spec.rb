@@ -90,19 +90,19 @@ describe User do
     end
   end
 
-  describe '#minutes_of_current_week' do
+  describe '#minutes_of_week' do
     let(:user)   { create(:user) }
     let!(:entry) { create(:entry, minutes: 1337, user_id: user.id) }
 
     it 'sums up the correct amount of minutes for user in current week' do
-      expect(user.minutes_of_current_week).to eq(1337)
+      expect(user.minutes_of_week(0)).to eq(entry.minutes)
     end
 
     context 'with entry from last week' do
-      let!(:other_entry) { create(:entry, minutes: 10, user_id: user.id, date: 1.week.ago) }
+      let!(:other_entry) { create(:entry, minutes: 10, user_id: user.id, date: 1.week.ago.beginning_of_week) }
 
       it 'does not sum up minutes from last week' do
-        expect(user.minutes_of_current_week).to eq(1337)
+        expect(user.minutes_of_week(1)).to eq(other_entry.minutes)
       end
     end
   end
