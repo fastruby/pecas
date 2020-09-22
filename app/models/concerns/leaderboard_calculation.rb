@@ -10,8 +10,6 @@ module LeaderboardCalculation
         end_date = Time.now.end_of_week.to_date - weeks_ago.weeks
         model_klass = self.name.gsub("Leaderboard", "").constantize
 
-        puts "Calculating time from #{start_date} to #{end_date} of #{model_klass}"
-
         model_klass.find_each do |record|
           leaderboard = self.find_or_create_by(
             "#{model_klass.name.downcase}_id" => record.id,
