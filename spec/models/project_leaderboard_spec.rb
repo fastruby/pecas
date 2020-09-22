@@ -35,7 +35,7 @@ describe ProjectLeaderboard do
       it "is not generating the leaderboard" do
         expect do
           ProjectLeaderboard.calculate
-        end.to change(ProjectLeaderboard.where(total_minutes: 0), :count).by(1)
+        end.to change(ProjectLeaderboard.where(total_minutes: 0), :count).by(2)
       end
     end
 
@@ -46,7 +46,7 @@ describe ProjectLeaderboard do
         expect { ProjectLeaderboard.calculate }.to change(
           ProjectLeaderboard.where(total_minutes: 0),
           :count
-        ).by(0)
+        ).by(1)
 
         expect(ProjectLeaderboard.where(
           total_minutes: entry.minutes).count).to eq(1)
