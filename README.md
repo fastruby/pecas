@@ -1,7 +1,7 @@
 # Pecas: Leaderboards for [Noko](https://nokotime.com)
 
-[![Build Status](https://travis-ci.org/ombulabs/pecas.svg?branch=master)](https://travis-ci.org/ombulabs/pecas)
-[![Code Climate](https://codeclimate.com/github/ombulabs/pecas/badges/gpa.svg)](https://codeclimate.com/github/ombulabs/pecas)
+[![Build Status](https://travis-ci.org/fastruby/pecas.svg?branch=master)](https://travis-ci.org/fastruby/pecas)
+[![Code Climate](https://codeclimate.com/github/fastruby/pecas/badges/gpa.svg)](https://codeclimate.com/github/fastruby/pecas)
 
 Pecas is a time tracking leaderboard for
 [https://nokotime.com](https://nokotime.com).
@@ -12,7 +12,7 @@ To install Pecas in a development environment, you can follow the next steps:
 
 ### First-time only
 
-    git clone git@github.com:ombulabs/pecas.git
+    git clone git@github.com:fastruby/pecas.git
     cd path/to/pecas
 
 Copy the database.yml config:
