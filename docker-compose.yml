@@ -61,7 +61,6 @@ services:
     # Specify the values of the environment variables
     # used in this container.
     environment:
-      RAILS_ENV: development
       DATABASE_NAME: pecas_development
       DATABASE_USER: pecas_development
       DATABASE_PASSWORD:
