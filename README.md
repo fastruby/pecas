@@ -10,13 +10,18 @@ Pecas is a time tracking leaderboard for
 
 To install Pecas in a development environment, you can follow the next steps:
 
+### Requirements
+
+- Docker
+- Docker-Compose
+- Git
+
 ### First-time only
 
     git clone git@github.com:fastruby/pecas.git
     cd path/to/pecas
-
-Copy the database.yml config:
-
+    docker-compose build
+    docker-compose run web /bin/bash
     ./bin/setup
 
 You must setup your `NOKO_TOKEN` in the `.env` file. You can setup your
