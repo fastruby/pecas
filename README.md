@@ -71,7 +71,7 @@ When Submitting a Pull Request:
 
 ## Sponsorship
 
-![FastRuby.io | Rails Upgrade Services](https://github.com/fastruby/pecas/raw/master/app/assets/images/fastruby-logo.png)
+![FastRuby.io | Rails Upgrade Services](app/assets/images/fastruby-logo.png)
 
 
 `Pecas` is maintained and funded by [FastRuby.io](https://fastruby.io). The names and logos for FastRuby.io are trademarks of The Lean Software Boutique LLC.
