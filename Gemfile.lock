@@ -49,6 +49,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    colorize (0.8.1)
     commonjs (0.2.7)
     concurrent-ruby (1.1.8)
     coveralls (0.7.2)
@@ -119,6 +120,8 @@ GEM
     minitest (5.14.4)
     multi_json (1.15.0)
     multipart-post (2.1.1)
+    next_rails (1.0.3)
+      colorize (>= 0.8.1)
     noko (1.7.0)
     nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
@@ -261,10 +264,11 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   json (~> 1.8.6)
+  next_rails
   noko
   pg (~> 0.20.0)
   pry-byebug
-  rails (~> 4.2)
+  rails (~> 4.2.1)
   rails-controller-testing
   rails_12factor
   rspec-rails
