@@ -49,12 +49,6 @@
 <p>To install Pecas in a development environment, you can follow the next steps:</p>
 
 <h3>
-<a id="ruby" class="anchor" href="#ruby" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ruby</h3>
-
-<pre><code>rvm install '2.1.2'
-</code></pre>
-
-<h3>
 <a id="first-time-only" class="anchor" href="#first-time-only" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>First-time only</h3>
 
 <p>Clone the repo</p>
@@ -67,25 +61,14 @@
 <pre><code>cd path/to/pecas
 </code></pre>
 
-<p>Copy the YML database config</p>
+<p>Build Docker containers:</p>
 
-<pre><code>cp config/database.yml.sample config/database.yml
-</code></pre>
-
-<p>Set up the database</p>
-
-<pre><code>bundle exec rake db:migrate
-</code></pre>
-
-<p>Install dependencies</p>
-
-<pre><code>bundle install
+<pre><code>docker-compose build
+docker-compose run web /bin/bash
+./bin/setup
 </code></pre>
 
 <p>Setup and configure your <code>.env</code></p>
-
-<pre><code>cp .env.sample .env
-</code></pre>
 
 <p>You can setup your <code>COUNTRY_CODE</code> environment variable with an ISO 3166 country code.
 Otherwise the E-Mails will be sent on holidays.</p>
@@ -93,9 +76,7 @@ Otherwise the E-Mails will be sent on holidays.</p>
 <h2>
 <a id="start" class="anchor" href="#start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Start</h2>
 
-<pre><code>rvm use 2.1.2@pecas
-bundle exec rvmsudo rails server
-</code></pre>
+<pre><code>docker-compose up</code></pre>
 
 <h2>
 <a id="import" class="anchor" href="#import" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Import</h2>
