@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[BUG] "
-labels: 'bug'
-assignees: 'black-bunny-brigade'
+title: "[BUG]"
+labels: "bug"
+assignees: "black-bunny-brigade"
 
 ---
 
@@ -16,9 +16,9 @@ assignees: 'black-bunny-brigade'
 - [ ] I'm reporting the issue to the correct repository (for multi-repository projects)
 
 
-**Version, Branch, or Commit:**
+**Branch/Commit:**
 
-Inform what version, branch, commit of Pecas you are using.
+Inform what branch/commit of Pecas you are using.
 
 **Expected behavior:**
 
@@ -42,12 +42,23 @@ Provide any relevant information about your setup (Customize the list accordingl
 1. Version of the software the issue is being opened for.
 2. Operating System
 3. Operating System version
-4. Ruby version
+4. Browser
+5. Browser version
+6. Device
+7. Firmware version
+8. SDK version
+9. Toolchain version
 
 _Delete any information that is not relevant._
+
+If you are unable to reproduce the bug, add the **Non-Reproducible** tag and describe the steps you followed leading to the bug to the best of your recollection.
+
+**Screenshots and Videos**
+
+If the issue has an effect in the frontend, include any relevant screenshots and videos here.
 
 **Logs**
 
 Include relevant log snippets or files here.
 
-**I will abide by the [code of conduct] (code_of_conduct.md)**
+**I will abide by the [code of conduct](https://github.com/fastruby/pecas/blob/main/code-of-conduct.md)**

@@ -10,6 +10,7 @@ default: &default
   timeout: 5000
 
 development:
+  database: <%= ENV['DATABASE_NAME'] %>_test
   <<: *default
 
 test:

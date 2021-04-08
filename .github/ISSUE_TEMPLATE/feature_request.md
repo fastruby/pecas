@@ -17,7 +17,7 @@ assignees: ''
 
 **Branch/Commit:**
 
-Inform what branch/commit/version of "Pecas" you are using.
+Inform what branch/commit/version of Pecas you are using.
 
 **Describe the feature:**
 
@@ -44,4 +44,4 @@ Include any mockup idea related to the requested feature if it applies.
 
 If you have resources related to the implementation or research for this feature, add them here.
 
-**I will abide by the [code of conduct](code_of_conduct.md)**
+**I will abide by the [code of conduct](https://github.com/fastruby/pecas/blob/main/code-of-conduct.md)**
