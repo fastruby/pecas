@@ -1,6 +1,10 @@
 require "rails_helper"
 
 describe LeaderboardController, type: :controller do
+  let(:leaderboard) do
+    assigns(:leaderboards).first
+  end
+
   include ActiveSupport::Testing::TimeHelpers
   render_views
 
@@ -33,8 +37,7 @@ describe LeaderboardController, type: :controller do
           get :projects
 
           expect(response.status).to   eq(200)
-          expect(response.body).to     include("29")
-          expect(response.body).not_to include("32")
+          expect((leaderboard.total_minutes / 60).to_i).to eq(29)
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -54,8 +57,7 @@ describe LeaderboardController, type: :controller do
             get :projects
 
             expect(response.status).to   eq(200)
-            expect(response.body).not_to include(project.name)
-            expect(response.body).not_to include("32")
+            expect(leaderboard).to be_nil
             expect(response.body).to     include("2015-07-13")
             expect(response.body).to     include("2015-07-19")
           end
@@ -67,8 +69,7 @@ describe LeaderboardController, type: :controller do
           get :projects, weeks_ago: 0
 
           expect(response.status).to   eq(200)
-          expect(response.body).to     include("29")
-          expect(response.body).not_to include("32")
+          expect((leaderboard.total_minutes / 60).to_i).to eq(29)
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -79,8 +80,7 @@ describe LeaderboardController, type: :controller do
           get :projects, weeks_ago: 1
 
           expect(response.status).to  eq(200)
-          expect(response.body).to     include("32")
-          expect(response.body).not_to include("29")
+          expect((leaderboard.total_minutes / 60).to_i).to eq(32)
           expect(response.body).to     include("2015-07-06")
           expect(response.body).to     include("2015-07-12")
         end
@@ -131,8 +131,7 @@ describe LeaderboardController, type: :controller do
           get :users
 
           expect(response.status).to   eq(200)
-          expect(response.body).to     include("29")
-          expect(response.body).not_to include("32")
+          expect((leaderboard.total_minutes / 60).to_i).to eq(29)
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -164,8 +163,7 @@ describe LeaderboardController, type: :controller do
           get :users, weeks_ago: 0
 
           expect(response.status).to   eq(200)
-          expect(response.body).to     include("29")
-          expect(response.body).not_to include("32")
+          expect((leaderboard.total_minutes / 60).to_i).to eq(29)
           expect(response.body).to     include("2015-07-13")
           expect(response.body).to     include("2015-07-19")
         end
@@ -176,8 +174,7 @@ describe LeaderboardController, type: :controller do
           get :users, weeks_ago: 1
 
           expect(response.status).to  eq(200)
-          expect(response.body).to     include("32")
-          expect(response.body).not_to include("29")
+          expect((leaderboard.total_minutes / 60).to_i).to eq(32)
           expect(response.body).to     include("2015-07-06")
           expect(response.body).to     include("2015-07-12")
         end
