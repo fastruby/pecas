@@ -30,7 +30,7 @@ the emails will be sent on holidays.
 
 ## Start
 
-    rails server
+    docker-compose up
 
 ## Import
 
