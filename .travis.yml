@@ -13,6 +13,7 @@ before_script:
 script: "bundle exec rspec"
 gemfile:
   - Gemfile
+  - Gemfile.next
 before_install:
   - gem update bundler
 
