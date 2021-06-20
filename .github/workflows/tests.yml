@@ -51,6 +51,11 @@ jobs:
           bundle exec rspec spec
   test-rails-5-0:
     runs-on: ubuntu-latest
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      BUNDLE_GEMFILE: Gemfile.next
+      RAILS_ENV: test
 
     services:
       postgres:
@@ -75,11 +80,6 @@ jobs:
           sudo apt-get -yqq install libpq-dev
 
       - name: Build App
-        env:
-          PGHOST: localhost
-          PGUSER: postgres
-          BUNDLE_GEMFILE: Gemfile.next
-          RAILS_ENV: test
         run: |
           gem install bundler:1.17.3
           bundle install --jobs 4 --retry 3
