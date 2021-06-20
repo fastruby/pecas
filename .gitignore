@@ -24,4 +24,3 @@ coverage/*
 
 # Bundler
 Gemfile.next.lock
-Gemfile.lock
