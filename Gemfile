@@ -1,17 +1,35 @@
+def next?
+  File.basename(__FILE__) == "Gemfile.next"
+end
 source 'https://rubygems.org'
 
 ruby '2.5.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2'
+if next?
+  gem 'rails', '~> 5.0.1'
+else
+  gem 'rails', '~> 4.2.1'
+end
+
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+if next?
+  gem 'sass-rails'
+else
+  gem 'sass-rails', '~> 4.0.3'
+end
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+if next?
+  gem 'coffee-rails'
+else
+  gem 'coffee-rails', '~> 4.0.0'
+end
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -34,7 +52,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'holidays'
 
-gem 'json', '~> 1.8.6'
+if next?
+  gem 'json'
+else
+  gem 'json', '~> 1.8.6'
+end
+
 
 group :production do
   gem 'pg', '~> 0.20.0'
@@ -45,6 +68,7 @@ group :development do
   gem 'pry-byebug', platform: [:ruby_20], require: false
   gem "sqlite3", "~> 1.3.6"
   gem 'spring'
+  gem 'next_rails'
 end
 
 group :test do

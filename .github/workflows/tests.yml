@@ -10,7 +10,7 @@ on:
     - main
 
 jobs:
-  test-ruby-2-5-8:
+  test-rails-4-2:
     runs-on: ubuntu-latest
 
     services:
@@ -40,6 +40,46 @@ jobs:
           PGHOST: localhost
           PGUSER: postgres
           RAILS_ENV: test
+        run: |
+          gem install bundler:1.17.3
+          bundle install --jobs 4 --retry 3
+          yarn install
+          cp config/database.yml.github config/database.yml
+          rake db:setup
+      - name: Run tests
+        run: |
+          bundle exec rspec spec
+  test-rails-5-0:
+    runs-on: ubuntu-latest
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      BUNDLE_GEMFILE: Gemfile.next
+      RAILS_ENV: test
+
+    services:
+      postgres:
+        image: postgres:11.6-alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "2.5.8"
+
+      - name: Install PostgreSQL 11 client
+        run: |
+          sudo apt-get -yqq install libpq-dev
+
+      - name: Build App
         run: |
           gem install bundler:1.17.3
           bundle install --jobs 4 --retry 3
