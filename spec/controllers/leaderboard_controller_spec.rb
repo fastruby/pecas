@@ -66,7 +66,7 @@ describe LeaderboardController, type: :controller do
 
       it "shows current leaderboard for current week" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
-          get :projects, weeks_ago: 0
+          get :projects, params: { weeks_ago: 0 }
 
           expect(response.status).to   eq(200)
           expect((leaderboard.total_minutes / 60).to_i).to eq(29)
@@ -77,7 +77,7 @@ describe LeaderboardController, type: :controller do
 
       it "shows leaderboard from one week ago" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
-          get :projects, weeks_ago: 1
+          get :projects, params: { weeks_ago: 1 }
 
           expect(response.status).to  eq(200)
           expect((leaderboard.total_minutes / 60).to_i).to eq(32)
@@ -88,7 +88,7 @@ describe LeaderboardController, type: :controller do
 
       it "shows leaderboard from two weeks ago" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
-          get :projects, weeks_ago: 2
+          get :projects, params: { weeks_ago: 2 }
 
           expect(response.status).to eq(200)
           within ".table-striped" do
@@ -160,7 +160,7 @@ describe LeaderboardController, type: :controller do
 
       it "shows current leaderboard for current week" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
-          get :users, weeks_ago: 0
+          get :users, params: { weeks_ago: 0 }
 
           expect(response.status).to   eq(200)
           expect((leaderboard.total_minutes / 60).to_i).to eq(29)
@@ -171,7 +171,7 @@ describe LeaderboardController, type: :controller do
 
       it "shows leaderboard from one week ago" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
-          get :users, weeks_ago: 1
+          get :users, params: { weeks_ago: 1 }
 
           expect(response.status).to  eq(200)
           expect((leaderboard.total_minutes / 60).to_i).to eq(32)
@@ -182,7 +182,7 @@ describe LeaderboardController, type: :controller do
 
       it "shows leaderboard from two weeks ago" do
         travel_to Time.new(2015, 07, 18, 0, 0, 0) do
-          get :users, weeks_ago: 2
+          get :users, params: { weeks_ago: 2 }
 
           expect(response.status).to eq(200)
           within ".table-striped" do
