@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :entry do
     description 'hello world'
     minutes 10

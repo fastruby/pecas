@@ -1,9 +1,9 @@
-require 'factory_girl'
-FactoryGirl.find_definitions
+require 'factory_bot'
+FactoryBot.find_definitions
 
-user_1 = FactoryGirl.create :user, name: "Hans"
-user_2 = FactoryGirl.create :user, name: "Franz"
-user_3 = FactoryGirl.create :user, name: "Otto"
+user_1 = FactoryBot.create :user, name: "Hans"
+user_2 = FactoryBot.create :user, name: "Franz"
+user_3 = FactoryBot.create :user, name: "Otto"
 
 project_1 = Project.create name: 'OmbuLabs'
 project_2 = Project.create name: 'OmbuShop'

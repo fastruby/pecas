@@ -5,7 +5,7 @@ describe 'Reminder Mailer' do
   include EmailSpec::Matchers
 
   let(:receiver) { 'test@example.com' }
-  let(:user)     { FactoryGirl.create(:user, name: 'Foo', email: receiver) }
+  let(:user)     { FactoryBot.create(:user, name: 'Foo', email: receiver) }
   let(:email)    { Reminder.send_to(user) }
 
   it "should be set to be delivered to the email passed in" do
