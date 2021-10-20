@@ -28,6 +28,8 @@ You must setup your `NOKO_TOKEN` in the `.env` file. You can setup your
 `COUNTRY_CODE` environment variable with an ISO 3166 country code. Otherwise
 the emails will be sent on holidays.
 
+You must also setup `BASIC_AUTH_NAME` and `BASIC_AUTH_PASSWORD` variables in the `.env` file that will be used for a basic http auth for the application.
+
 ## Start
 
     docker-compose up
@@ -54,24 +56,22 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/fastr
 
 When Submitting a Pull Request:
 
-* If your PR closes any open GitHub issues, please include `Closes #XXXX` in your comment
+- If your PR closes any open GitHub issues, please include `Closes #XXXX` in your comment
 
-* Please include a summary of the change and which issue is fixed or which feature is introduced.
+- Please include a summary of the change and which issue is fixed or which feature is introduced.
 
-* If changes to the behavior are made, clearly describe what changes.
+- If changes to the behavior are made, clearly describe what changes.
 
-* If changes to the UI are made, please include screenshots of the before and after.
-
+- If changes to the UI are made, please include screenshots of the before and after.
 
 ## License
 
 [License]
 
-  [license]: LICENSE
+[license]: LICENSE
 
 ## Sponsorship
 
 ![FastRuby.io | Rails Upgrade Services](app/assets/images/fastruby-logo.png)
-
 
 `Pecas` is maintained and funded by [FastRuby.io](https://fastruby.io). The names and logos for FastRuby.io are trademarks of The Lean Software Boutique LLC.
