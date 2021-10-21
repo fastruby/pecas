@@ -10,7 +10,7 @@ services:
   database:
     # Use the postgres 11.5 base image for this container.
     image: postgres:11.5
-
+    platform: linux/x86_64
     volumes:
       # We need to tell Docker where on the PostgreSQL
       # container we want to keep the PostgreSQL data.
@@ -43,6 +43,7 @@ services:
     # directory get synced with Docker. Without this line,
     # we'd have to restart the container every time we
     # changed a file.
+    platform: linux/x86_64
     volumes:
       - .:/code:cached
 
