@@ -1,4 +1,4 @@
-class CreateUserLeaderboards < ActiveRecord::Migration
+class CreateUserLeaderboards < ActiveRecord::Migration[4.2]
   def change
     create_table :user_leaderboards do |t|
       t.integer :user_id
