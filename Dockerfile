@@ -17,6 +17,7 @@ WORKDIR /code
 COPY . /code
 
 # Run bundle install to install the Ruby dependencies.
+RUN gem install bundler:"$(tail -n 1 Gemfile.lock)"
 RUN bundle install
 
 # Run yarn install to install JavaScript dependencies.
