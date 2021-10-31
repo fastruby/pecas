@@ -1,3 +1,4 @@
+
 def next?
   File.basename(__FILE__) == "Gemfile.next"
 end
@@ -7,9 +8,9 @@ ruby '2.5.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 if next?
-  gem 'rails', '~> 5.1.0'
+  gem 'rails', '~> 5.2.0'
 else
-  gem 'rails', '~> 5.0.1'
+  gem 'rails', '~> 5.1.0'
 end
 
 # Use sqlite3 as the database for Active Record
@@ -37,7 +38,6 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -47,7 +47,7 @@ gem 'holidays'
 gem 'json'
 
 group :production do
-  gem 'pg', '~> 0.20.0'
+  gem 'pg'
   gem 'rails_12factor'
 end
 

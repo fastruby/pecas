@@ -22,5 +22,3 @@
 # SimpleCov report directory
 coverage/*
 
-# Bundler
-Gemfile.next.lock
