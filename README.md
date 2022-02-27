@@ -28,6 +28,16 @@ You must setup your `NOKO_TOKEN` in the `.env` file. You can setup your
 `COUNTRY_CODE` environment variable with an ISO 3166 country code. Otherwise
 the emails will be sent on holidays.
 
+If you want to use Pecas to send Slack messages you'll also need to setup
+`SLACK_OAUTH_TOKEN` in the `.env` file. This requires a `SLACK_OAUTH_TOKEN`
+generated with the following scopes:
+
+* chat:write
+* usergroups:read
+* users.profile:read
+* users:read
+* users:read.email
+
 You must also setup `BASIC_AUTH_NAME` and `BASIC_AUTH_PASSWORD` variables in the `.env` file that will be used for a basic http auth for the application.
 
 ## Start
