@@ -4,11 +4,19 @@ class SlackService::GroupMemberMessaging
   ##
   # @option options [string] :team
   # @option options [string] :timezone
-  def initialize(group_handle)
+  def initialize(group_handle, actionable_hour, now = Time.now)
     connect_client()
     set_usergroup_id(group_handle)
     set_user_ids()
-    set_members()
+    set_members(actionable_hour, now)
+  end
+
+  def included_emails
+    @members.keys
+  end
+
+  def user(email)
+    @members[email]
   end
 
     private
@@ -18,13 +26,16 @@ class SlackService::GroupMemberMessaging
       raise "Slack API connection failed" if @client.auth_test[:team_id].nil?
     end
 
-    def set_members
+    def set_members(actionable_hour, now)
       @members = @user_ids.inject({}) do |users, user_id|
         result, data = ::SlackService.find_slack_user(user_id, @client)
 
         raise data unless result == :ok
 
-        users[data.email] = data
+        if now.in_time_zone(data.tz).hour == actionable_hour
+          users[data.email] = data
+        end
+        
         users
       end
     end

@@ -38,6 +38,7 @@ describe SlackService do
       expect(data.id).to eql("A00AA1AAA")
       expect(data.name).to eql("cap")
       expect(data.real_name).to eql("Steve Rogers")
+      expect(data.first_name).to eql("Steve")
       expect(data.email).to eql("steve@ombulabs.com")
       expect(data.tz).to eql("America/New_York")
     end

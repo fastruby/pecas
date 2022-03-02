@@ -6,6 +6,7 @@ describe SlackService::SlackUser do
       id: "A00AA1AAA",
       name: "cap",
       real_name: "Steve Rogers",
+      first_name: "Steve",
       tz: "America/New_York",
       email: "steve@ombulabs.com",
       client: SlackServiceSpec::SlackUserSpec::SlackClientMock
@@ -14,7 +15,7 @@ describe SlackService::SlackUser do
 
   describe ".initialize" do
     it "requires all expected keys" do
-      [:id, :name, :real_name, :tz, :email, :client].map { |key|
+      [:id, :name, :real_name, :first_name, :tz, :email, :client].map { |key|
         expect { SlackService::SlackUser.new(valid_params.except!(key)) }.to raise_error(KeyError)
       }
     end

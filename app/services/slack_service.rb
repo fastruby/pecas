@@ -56,6 +56,7 @@ class SlackService
         client: client,
         id: response["user"]["id"],
         name: response["user"]["name"],
+        first_name: response["user"]["profile"]["first_name"],
         real_name: response["user"]["real_name"],
         tz: response["user"]["tz"],
         email: response["user"]["profile"]["email"]
