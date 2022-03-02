@@ -2,8 +2,9 @@ class SlackService::GroupMemberMessaging
   attr_reader :members
 
   ##
-  # @option options [string] :team
-  # @option options [string] :timezone
+  # @param [String] group_handle The id of a group from a mesdsaging service: ex @ombuteam on Slack
+  # @param [Integer] actionable_hour The hour for the end of day on a 24 hours clock: ex 18 = 6 PM
+  # @param [Time] now The current system time
   def initialize(group_handle, actionable_hour, now = Time.now)
     connect_client()
     set_usergroup_id(group_handle)
@@ -15,8 +16,14 @@ class SlackService::GroupMemberMessaging
     @members.keys
   end
 
-  def user(email)
-    @members[email]
+  def send_time_entry_format_warning(email, entries)
+    return :ok if entries.empty?
+
+    member = @members[email]
+    message = time_entry_format_warning_message(member, entries)
+    member.message(message)
+
+    :ok
   end
 
     private
@@ -52,5 +59,36 @@ class SlackService::GroupMemberMessaging
       raise data unless result == :ok
 
       @usergroup_id = data
+    end
+
+    def time_entry_format_warning_message(member, entries)
+      {
+        text: "I found these entries that might need a better description",
+        blocks: [
+          {
+            "type": "section",
+            "text": { "type": "plain_text", "text": time_entry_format_warning_prefix(member) }
+          },
+          {
+            "type": "section",
+            "text": { "type": "mrkdwn", "text": entries.map{|entry| "* #{entry.description} (#{entry.length})" }.join("\n") }
+          },
+          {
+            "type": "section",
+            "text": { "type": "plain_text", "text": time_entry_format_warning_suffix() }
+          },
+        ]
+      }
+    end
+
+    def time_entry_format_warning_prefix(member)
+      "Hi #{member.first_name}, I found these entries that might " +
+      "need a better description - possibly a missing a JIRA ticket or ID:"
+    end
+
+    def time_entry_format_warning_suffix
+      "Please make sure that these entries are accurate. If they " +
+      "are all good, great! If not, please make sure you fix them so you " +
+      "don't get penalized for any of them!"
     end
 end

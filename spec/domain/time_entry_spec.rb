@@ -1,93 +1,86 @@
 require "rails_helper"
 
 describe TimeEntry do
-  let(:user) {
-    SlackService::SlackUser.new({
-      id: "A00AA1AAA",
-      name: "cap",
-      real_name: "Steve Rogers",
-      first_name: "Steve",
-      tz: "America/New_York",
-      email: "steve@ombulabs.com",
-      client: TimeEntrySpec::SlackClientMock
-    })
-  }
+  let!(:user_1) { create(:user, email: "steve@ombulabs.com") }
+  let!(:user_2) { create(:user, email: "carole@ombulabs.com") }
+  let!(:entry_1)   { create(:entry, user: user_1, date: Date.new(2022, 3, 1), description: "A non-descriptive description 1", minutes: 120) }
+  let!(:entry_2)   { create(:entry, user: user_1, date: Date.new(2022, 3, 1), description: "A non-descriptive description 2", minutes: 90) }
+  let!(:entry_3)   { create(:entry, user: user_1, date: Date.new(2022, 3, 1), description: "A non-descriptive description 3", minutes: 20) }
+  let!(:entry_4)   { create(:entry, user: user_1, date: Date.new(2022, 3, 2), description: "A non-descriptive description 3", minutes: 10) }
+  let!(:other_user_entry)   { create(:entry, date: Date.new(2022, 3, 1)) }
 
-  let(:user_1) { create(:user, email: "steve@ombulabs.com") }
-  let(:entry_1)   { create(:entry, user: user_1, date: Date.new(2022, 3, 1), description: "A non-descriptive description 1", minutes: 120) }
-  let(:entry_2)   { create(:entry, user: user_1, date: Date.new(2022, 3, 1), description: "A non-descriptive description 2", minutes: 90) }
-  let(:entry_3)   { create(:entry, user: user_1, date: Date.new(2022, 3, 1), description: "A non-descriptive description 3", minutes: 20) }
+  describe "#invalid_time_entries_alert" do
+    let(:time_entry) {
+      TimeEntry.new(Date.new(2022, 3, 1), TimeEntrySpec::GroupMemberMessagingMock, TimeEntry::DescriptionRules, hour_of_day: 20)
+    }
 
-  describe ".bad_entry_message_template" do
-    it "formats a multi-part message to sent the user" do
-      message = TimeEntry.bad_entry_message_template(user, [entry_1, entry_2, entry_3])
-      # {:text => {:text => "The Description", :type => "plain_text"}, :type => "section"}
-      intro_block = message[:blocks][0][:text]
-      list_block = message[:blocks][1][:text]
-      expect(intro_block[:type]).to eql("plain_text")
-      expect(intro_block[:text]).to include(user.first_name)
-      expect(list_block[:type]).to eql("mrkdwn")
-      expect(list_block[:text]).to include(entry_1.description)
-      expect(list_block[:text]).to include("2 hours")
-      expect(list_block[:text]).to include(entry_2.description)
-      expect(list_block[:text]).to include("1 hour, 30 minutes")
-      expect(list_block[:text]).to include(entry_3.description)
-      expect(list_block[:text]).to include("20 minutes")
-    end
-  end
-
-  describe ".maybe_message" do
-    it "sends a formatted message if there are incorrectly formatted entries" do
-      messaging_service = TimeEntrySpec::GroupMemberMessagingMock.new(user)
-      allow_any_instance_of(TimeEntry::DescriptionRules).to receive(:valid?).and_return(false)
-      allow(TimeEntry).to receive(:bad_entry_message_template).with(user, [entry_1]).and_return("Message for user")
-      allow(user).to receive(:message).with("Message for user")
-
-      expect(TimeEntry).to receive(:bad_entry_message_template)
-      expect(user).to receive(:message)
-      TimeEntry.maybe_message("steve@ombulabs.com", [entry_1], messaging_service, TimeEntry::DescriptionRules)
-    end
-
-    it "does not send a message if there are no incorrectly formatted entries" do
-      messaging_service = TimeEntrySpec::GroupMemberMessagingMock.new(user)
+    it "sets a messaging service with expected options" do
+      allow(TimeEntrySpec::GroupMemberMessagingMock).to receive(:new).and_return(TimeEntrySpec::GroupMemberMessagingMock.new(nil, nil).set_mock(user_1, user_2))
       allow_any_instance_of(TimeEntry::DescriptionRules).to receive(:valid?).and_return(true)
-
-      expect(TimeEntry).not_to receive(:bad_entry_message_template)
-      expect(user).not_to receive(:message)
-      TimeEntry.maybe_message("steve@ombulabs.com", [entry_1], messaging_service, TimeEntry::DescriptionRules)
+      expect(TimeEntrySpec::GroupMemberMessagingMock).to receive(:new).with("ombuteam", hour_to_run: 20)
+      time_entry.invalid_time_entries_alert("ombuteam")
     end
-  end
 
-  describe ".alert_problematic_time_entries" do
-    it "collects entries for a specific day and forwards to maybe_message" do
-      allow(SlackService::GroupMemberMessaging).to receive(:new).with("ombuteam", 18).and_return(TimeEntrySpec::SlackClientMock)
-      expect(SlackService::GroupMemberMessaging).to receive(:new)
-      expect(TimeEntry).to receive(:maybe_message).with("steve@ombulabs.com", [entry_1, entry_2, entry_3], TimeEntrySpec::SlackClientMock)
-      TimeEntry.alert_problematic_time_entries("ombuteam", Date.new(2022, 3, 1), 18, SlackService::GroupMemberMessaging)
+    it "queries for entries related to emails found in the messaging service" do
+      allow(TimeEntrySpec::GroupMemberMessagingMock).to receive(:new).and_return(TimeEntrySpec::GroupMemberMessagingMock.new(nil, nil).set_mock(user_1, user_2))
+      allow_any_instance_of(TimeEntry::DescriptionRules).to receive(:valid?).and_return(true)
+      time_entry.invalid_time_entries_alert("ombuteam")
+      expect(time_entry.grouped_entries.keys).to eql(["steve@ombulabs.com"])
+      expect(time_entry.grouped_entries["steve@ombulabs.com"].count).to eql(3)
+      expect(time_entry.grouped_entries["steve@ombulabs.com"]).to include(entry_1)
+      expect(time_entry.grouped_entries["steve@ombulabs.com"]).to include(entry_2)
+      expect(time_entry.grouped_entries["steve@ombulabs.com"]).to include(entry_3)
+    end
+
+    it "calls send_time_entry_format_warning on the service if there are invalid entries" do
+      mock_service_instance = TimeEntrySpec::GroupMemberMessagingMock.new(nil, nil).set_mock(user_1, user_2)
+      allow(TimeEntrySpec::GroupMemberMessagingMock).to receive(:new).and_return(mock_service_instance)
+      allow(TimeEntry::DescriptionRules).to receive(:new).with(entry_1).and_return(TimeEntrySpec::NegativeValidatorMock.new)
+      allow(TimeEntry::DescriptionRules).to receive(:new).with(entry_2).and_return(TimeEntrySpec::PositiveValidatorMock.new)
+      allow(TimeEntry::DescriptionRules).to receive(:new).with(entry_3).and_return(TimeEntrySpec::NegativeValidatorMock.new)
+      expect(mock_service_instance).to receive(:send_time_entry_format_warning).with("steve@ombulabs.com", [entry_1, entry_3])
+      time_entry.invalid_time_entries_alert("ombuteam")
     end
   end
 end
 
 module TimeEntrySpec
-  class SlackClientMock
-    def self.included_emails
-      ["steve@ombulabs.com"]
+  class NegativeValidatorMock
+    def valid?
+      false
+    end
+  end
+end
+
+module TimeEntrySpec
+  class PositiveValidatorMock
+    def valid?
+      true
     end
   end
 end
 
 module TimeEntrySpec
   class GroupMemberMessagingMock
-    def initialize(user)
-      @user = user
+    def initialize(_group_handle, _actionable_hour)
+      self
     end
 
-    def user(email)
-      @user
+    def send_time_entry_format_warning(_email, _time_entries)
     end
 
+    def set_mock(user_1, user_2)
+      @user_1 = user_1
+      @user_2 = user_2
+
+      self
+    end
+
+    # NOTE: In practice the user objects would be from the service
+    #   (ex: SlackService::SlackUser) not User models. We return User models
+    #   here for simplicity
     def included_emails
-      [@user.email]
+      [@user_1.email, @user_2.email]
     end
   end
 end

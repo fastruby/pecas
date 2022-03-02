@@ -1,8 +1,8 @@
 class TimeEntry::DescriptionRules
   JIRA_REGEX = /(?:\s|^)([A-Z]+-[0-9]+)(?=\s|$)/
 
-  def initialize(description, ruleset = :internal_employee)
-    @description = description
+  def initialize(entry, ruleset = :internal_employee)
+    @description = entry.description
     @ruleset = ruleset
   end
 

@@ -102,6 +102,13 @@ class SlackService
   def self.cobble_message_params(channel_id, message)
     return {channel: channel_id, text: message} if message.kind_of?(String)
 
+    validate_message_keys(message)
+
+    message[:channel] = channel_id
+    message
+  end
+
+  def self.validate_message_keys(message)
     contains_required_key = message.keys.inject(false) { |acc, key|
         acc || [:text, :attachments, :blocks].any?(key)
       }
@@ -109,8 +116,5 @@ class SlackService
 
     extra_message_keys = message.keys - [:text, :attachments, :blocks]
     raise MessageFormatError.new("Message format incorrect") unless extra_message_keys.empty?
-
-    message[:channel] = channel_id
-    message
   end
 end
