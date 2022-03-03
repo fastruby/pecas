@@ -17,7 +17,7 @@ describe TimeEntry do
     it "sets a messaging service with expected options" do
       allow(TimeEntrySpec::GroupMemberMessagingMock).to receive(:new).and_return(TimeEntrySpec::GroupMemberMessagingMock.new(nil, nil).set_mock(user_1, user_2))
       allow_any_instance_of(TimeEntry::DescriptionRules).to receive(:valid?).and_return(true)
-      expect(TimeEntrySpec::GroupMemberMessagingMock).to receive(:new).with("ombuteam", hour_to_run: 20)
+      expect(TimeEntrySpec::GroupMemberMessagingMock).to receive(:new).with("ombuteam", 20)
       time_entry.invalid_time_entries_alert("ombuteam")
     end
 

@@ -45,7 +45,7 @@ class TimeEntry
     end
 
     def set_messaging_service(group_handle)
-      @service = @messaging_service.new(group_handle, hour_to_run: @hour_to_run)
+      @service = @messaging_service.new(group_handle, @hour_to_run)
     end
 
     def emails_to_consider()
