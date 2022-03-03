@@ -5,7 +5,7 @@ FROM ruby:2.5.8
 # Install additional package i.e Yarn.
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -y yarn
+RUN apt-get update && apt-get install -y yarn cron
 
 # Use a directory called /code in which to store
 # this application's files. (The directory name
@@ -19,6 +19,12 @@ COPY . /code
 # Run bundle install to install the Ruby dependencies.
 RUN gem install bundler:"$(tail -n 1 Gemfile.lock)"
 RUN bundle install
+
+RUN crontab -l | { cat; echo ""; } | crontab -
+RUN bundle exec whenever --update-crontab
+
+# RUN bundle exec whenever -c && bundle exec whenever --update-crontab && touch ./log/cron.log
+# ENTRYPOINT crond
 
 # Run yarn install to install JavaScript dependencies.
 # RUN yarn install --check-files

@@ -35,6 +35,13 @@ services:
       # user called (arbitrarily) pecas_development.
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  cron_job:
+    build: .
+    command: cron -f
+    depends_on:
+      - database
+      - web
+
   web:
     # The root directory from which we're building.
     build: .
