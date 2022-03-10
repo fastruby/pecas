@@ -19,7 +19,7 @@ class TimeEntry
   # @param [String] group_handle The id of a group from a messaging service: ex `ombuteam` on Slack
   def invalid_time_entries_alert(group_handle)
     set_messaging_service(group_handle)
-    set_grouped_entries()
+    set_grouped_entries
 
     @grouped_entries.each { |email, entries| maybe_message(email, entries) }
     :ok
@@ -29,7 +29,7 @@ class TimeEntry
 
     def maybe_message(email, entries)
       dirty_entries = entries.select { |entry|
-        not @rule_handler.new(entry).valid?
+        !@rule_handler.new(entry).valid?
       }
 
       unless dirty_entries.empty?
@@ -39,7 +39,7 @@ class TimeEntry
 
     def set_grouped_entries
       @grouped_entries = Entry
-        .for_users_by_email(emails_to_consider())
+        .for_users_by_email(emails_to_consider)
         .where(date: @today)
         .group_by(&:user_email)
     end
@@ -48,7 +48,7 @@ class TimeEntry
       @service = @messaging_service.new(group_handle, @hour_to_run)
     end
 
-    def emails_to_consider()
-      @service.included_emails()
+    def emails_to_consider
+      @service.included_emails
     end
 end

@@ -6,9 +6,9 @@ class SlackService::GroupMemberMessaging
   # @param [Integer] actionable_hour The hour for the end of day on a 24 hours clock: ex 18 = 6 PM
   # @param [Time] now The current system time
   def initialize(group_handle, actionable_hour, now = Time.now)
-    connect_client()
+    connect_client
     set_usergroup_id(group_handle)
-    set_user_ids()
+    set_user_ids
     set_members(actionable_hour, now)
   end
 
@@ -75,7 +75,7 @@ class SlackService::GroupMemberMessaging
           },
           {
             "type": "section",
-            "text": { "type": "plain_text", "text": time_entry_format_warning_suffix() }
+            "text": { "type": "plain_text", "text": time_entry_format_warning_suffix }
           },
         ]
       }

@@ -14,7 +14,7 @@ class SlackService
   # @return [[:error, String]] if failure
   # @see https://api.slack.com/methods/usergroups.list
   def self.find_usergroup_id(usergroup_handle, client)
-    response = client.usergroups_list()
+    response = client.usergroups_list
     return [:error, response["error"]] unless response["ok"]
 
     usergroup = response.usergroups.find { |group| group["handle"] == usergroup_handle }

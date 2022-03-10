@@ -18,6 +18,6 @@ class Entry < ActiveRecord::Base
     private
 
     def time_label(label, value)
-      return "#{value} #{label.pluralize(value)}" if value > 0
+      "#{value} #{label.pluralize(value)}" if value > 0
     end
 end

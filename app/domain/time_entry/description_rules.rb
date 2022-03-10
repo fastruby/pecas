@@ -7,15 +7,14 @@ class TimeEntry::DescriptionRules
   end
 
   def valid?
-    return internal_employee() if @ruleset == :internal_employee
+    return internal_employee if @ruleset == :internal_employee
     false
   end
 
     private
 
     def has_word_count(length)
-      return true if @description.split.size > length - 1
-      false
+      @description.split.size > length - 1
     end
 
     def has_calls_tag
@@ -26,6 +25,9 @@ class TimeEntry::DescriptionRules
       @description.downcase.include?("http")
     end
 
+    # Removes square brackets and commas from the string before match as the
+    #   "official" Jira regex won't match unless the jira id is preceeded by
+    #   a space
     def has_jira_ticket
       @description.gsub(/[\[\]\,\.]/, ' ').scan(JIRA_REGEX).any?
     end
@@ -33,6 +35,6 @@ class TimeEntry::DescriptionRules
     def internal_employee
       min_word_count = 4
 
-      has_word_count(min_word_count) && (has_calls_tag() || has_url() || has_jira_ticket())
+      has_word_count(min_word_count) && (has_calls_tag || has_url || has_jira_ticket)
     end
 end

@@ -124,7 +124,7 @@ module SlackServiceSpec
     def self.usergroups_list
       usergroup_list = Slack::Messages::Message.new
       usergroup_list[:ok] = true
-      usergroup_list[:usergroups] = [usergroup_mock()]
+      usergroup_list[:usergroups] = [usergroup_mock]
       usergroup_list
     end
 
@@ -143,7 +143,7 @@ module SlackServiceSpec
       if params[:user] == "A00AA1AAA"
         user = Slack::Messages::Message.new
         user[:ok] = true
-        user[:user] = user_mock()
+        user[:user] = user_mock
         user
       else
         raise Slack::Web::Api::Errors::UserNotFound.new("not_found")
@@ -198,7 +198,7 @@ module SlackServiceSpec
       user[:is_restricted] = false
       user[:is_ultra_restricted] = false
       user[:name] = "cap"
-      user[:profile] = profile_mock()
+      user[:profile] = profile_mock
       user[:real_name] = "Steve Rogers"
       user[:team_id] = "A00AA0AAA"
       user[:tz] = "America/New_York"
