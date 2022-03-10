@@ -47,9 +47,6 @@ gem 'holidays'
 
 gem 'json'
 
-gem 'delayed_job_active_record'
-gem 'whenever'
-
 group :production do
   gem 'pg'
   gem 'rails_12factor'

@@ -20,12 +20,6 @@ COPY . /code
 RUN gem install bundler:"$(tail -n 1 Gemfile.lock)"
 RUN bundle install
 
-RUN crontab -l | { cat; echo ""; } | crontab -
-RUN bundle exec whenever --update-crontab
-
-# RUN bundle exec whenever -c && bundle exec whenever --update-crontab && touch ./log/cron.log
-# ENTRYPOINT crond
-
 # Run yarn install to install JavaScript dependencies.
 # RUN yarn install --check-files
 

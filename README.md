@@ -28,6 +28,10 @@ You must setup your `NOKO_TOKEN` in the `.env` file. You can setup your
 `COUNTRY_CODE` environment variable with an ISO 3166 country code. Otherwise
 the emails will be sent on holidays.
 
+You must also setup `BASIC_AUTH_NAME` and `BASIC_AUTH_PASSWORD` variables in the `.env` file that will be used for a basic http auth for the application.
+
+## Slack Notifications
+
 If you want to use Pecas to send Slack messages you'll also need to setup
 `SLACK_OAUTH_TOKEN` in the `.env` file. This requires a `SLACK_OAUTH_TOKEN`
 generated with the following scopes:
@@ -38,7 +42,10 @@ generated with the following scopes:
 * users:read
 * users:read.email
 
-You must also setup `BASIC_AUTH_NAME` and `BASIC_AUTH_PASSWORD` variables in the `.env` file that will be used for a basic http auth for the application.
+Once set up we can use the rake task `notify:send_noko_format_warning['<name of slack group to alert>']`.
+This task is desined to be run once an hour (for best results - a few minutes
+after the hour) as it will only notify users Slack reports as being in the
+timezone currently within an hour of 8pm.
 
 ## Start
 

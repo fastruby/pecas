@@ -4,7 +4,7 @@ namespace :notify do
     raise "You must pass a Slack Handle for the group you'd like to message" unless args.group_handle
 
     # Eight pm is 20:00 on a 24 hour clock. This will be used to define "end of day"
-    eight_pm_hour = 19
+    eight_pm_hour = 20
 
     p "Assessing time entries to send validation warnings if needed"
     p args.group_handle
