@@ -24,11 +24,13 @@ To install Pecas in a development environment, you can follow the next steps:
     docker-compose run web /bin/bash
     ./bin/setup
 
-You must setup your `NOKO_TOKEN` in the `.env` file. You can setup your
+You must setup your `NOKO_TOKEN` in the `.env` file. You can fetch the token value from the Noko app. After logging in, you can find the API token or create a new API token under the `Connected Apps` section. You can setup your
 `COUNTRY_CODE` environment variable with an ISO 3166 country code. Otherwise
 the emails will be sent on holidays.
 
 You must also setup `BASIC_AUTH_NAME` and `BASIC_AUTH_PASSWORD` variables in the `.env` file that will be used for a basic http auth for the application.
+
+If you have already run the command `./bin/setup`, it would create a `.env` file if it does not exist and add these variables in that file. You just need to update the `NOKO_TOKEN` with the correct value and if the `.env` file already exist, then you need to manually add these variables to the file with correct values. You can look at `.env.sample` for reference.
 
 ## Start
 
