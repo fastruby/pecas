@@ -6,35 +6,79 @@
 Pecas is a time tracking leaderboard for
 [https://nokotime.com](https://nokotime.com).
 
-## Setup
+## Getting started
 
-To install Pecas in a development environment, you can follow the next steps:
+To get started with the app, clone the repo and then install the needed gems running the setup script:
 
-### Requirements
+```bash
+git clone git@github.com:fastruby/pecas.git
+cd pecas
+./bin/setup
+```
 
-- Docker
-- Docker-Compose
-- Git
+## Environment Variables
 
-### First-time only
+The command `./bin/setup`, among other things, creates the `.env` file which contains the following env variables:
 
-    git clone git@github.com:fastruby/pecas.git
-    cd path/to/pecas
-    docker-compose build
-    docker-compose run web /bin/bash
-    ./bin/setup
+```yml
+# .env.sample
+NOKO_ACCOUNT_HOST=ombulabs
+NOKO_TOKEN=foobar
+SMTP_SERVER=smtp.sendgrid.net
+SMTP_PORT=587
+SMTP_DOMAIN=ombushop.com
+SMTP_USER_NAME=ernesto@ombushop.com
+SMTP_USER_PASSWORD=secret
+COUNTRY_CODE="ar"
+DATABASE_NAME="pecas"
+BASIC_AUTH_NAME="user"
+BASIC_AUTH_PASSWORD="secret"
+```
 
-You must setup your `NOKO_TOKEN` in the `.env` file. You can fetch the token value from the Noko app. After logging in, you can find the API token or create a new API token under the `Connected Apps` section. You can setup your
-`COUNTRY_CODE` environment variable with an ISO 3166 country code. Otherwise
-the emails will be sent on holidays.
+Now, you just need to update the `NOKO_TOKEN` env with the correct value.
+You can fetch the token value from the Noko app, after logging in, you can find the `API token` or create a new one under the `Connected Apps > Noko API > Personal Access Tokens` section.
 
-You must also setup `BASIC_AUTH_NAME` and `BASIC_AUTH_PASSWORD` variables in the `.env` file that will be used for a basic http auth for the application.
+The `BASIC_AUTH_NAME` and `BASIC_AUTH_PASSWORD` are already setup from the `.env.sample` file but you can change their values at any time, will be used for a basic http auth for the application.
 
-If you have already run the command `./bin/setup`, it would create a `.env` file if it does not exist and add these variables in that file. You just need to update the `NOKO_TOKEN` with the correct value and if the `.env` file already exist, then you need to manually add these variables to the file with correct values. You can look at `.env.sample` for reference.
+You can setup your `COUNTRY_CODE` environment variable with an ISO 3166 country code.
+Otherwise the emails will be sent on holidays.
 
-## Start
+## Starting the Server
 
-    docker-compose up
+```bash
+rails s
+```
+
+Go to `http://localhost:3000` and start your session with the `BASIC_AUTH_NAME` and `BASIC_AUTH_PASSWORD` values.
+
+## Running Tests
+
+```bash
+rspec
+```
+
+## Using Docker
+
+> NOTE: You'll need to have docker and docker-compose installed
+
+Build the pecas docker image
+
+```bash
+docker-compose build
+```
+
+First-time only
+
+```bash
+docker-compose run web /bin/bash
+./bin/setup
+```
+
+Start
+
+```bash
+docker-compose up
+```
 
 ## Import
 
