@@ -21,4 +21,4 @@
 
 # SimpleCov report directory
 coverage/*
-
+.DS_Store

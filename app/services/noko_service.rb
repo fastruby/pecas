@@ -6,32 +6,33 @@ class NokoService
     @client ||= Noko::Client.new(token: ENV["NOKO_TOKEN"])
   end
 
-  def self.import_users
-    client.get_users.each do |user|
+  def self.import_users(page = 0)
+    results = client.get_users(page: page)
+    results.each do |user|
       u = User.find_or_create_by(id: user.id)
       u.update_attributes(name: "#{user.first_name} #{user.last_name}",
                           email: user.email, state: user.state)
     end
+
+    import_users(page + 1) if results.try(:link).try(:next)
   end
 
-  def self.import_projects
-    client.get_projects.each do |project|
+  def self.import_projects(page = 0)
+    results = client.get_projects(page: page)
+
+    results.each do |project|
       p1 = Project.find_or_create_by(id: project.id)
       p1.update_attributes(name: project.name, enabled: project.enabled)
     end
+
+    import_projects(page + 1) if results.try(:link).try(:next)
   end
 
-  def self.import_entries(start_date, end_date)
-    result = client.get_entries(from: start_date, to: end_date)
-    save_entries_for(result)
+  def self.import_entries(start_date, end_date, page = 0)
+    results = client.get_entries(from: start_date, to: end_date, page: page)
+    save_entries_for(results)
 
-    if last = result.try(:link).try(:last)
-      last_page = last.match(/page=(\d+)/)[1].to_i
-      (1..last_page).each do |page|
-        result = client.get_entries(from: start_date, to: end_date, page: page)
-        save_entries_for(result)
-      end
-    end
+    import_entries(start_date, end_date, page + 1) if results.try(:link).try(:next)
 end
 
   private
