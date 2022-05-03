@@ -96,6 +96,13 @@ Generate demo data with:
 
     rake demo_data:setup
 
+## Deleting old data
+
+You can run this task specifying the number of months ago for the query:
+
+    # delete entries with date older than 6 months ago
+    MONTHS=6 rake delete_past_entries
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at [https://github.com/fastruby/pecas](https://github.com/fastruby/pecas). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
