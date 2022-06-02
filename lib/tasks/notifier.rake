@@ -1,6 +1,6 @@
 namespace :notify do
   desc "Sends Slack warnings to users which have poorly-formed noko time entries"
-  task :send_noko_format_warning, [:group_handle, :end_of_day] => ['import:entries'] do |t, args|
+  task :send_noko_format_warning, [:group_handle] => ['import:entries'] do |t, args|
     raise "You must pass a Slack Handle for the group you'd like to message" unless args.group_handle
 
     # Eight pm is 20:00 on a 24 hour clock. This will be used to define "end of day"
