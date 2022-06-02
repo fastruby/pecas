@@ -1,12 +1,14 @@
 require "rails_helper"
 
 describe SlackService::GroupMemberMessaging do
+  include ActiveSupport::Testing::TimeHelpers
+
   let(:client) { instance_double('Slack::Web::Client', auth_test: {team_id: "TEAMID"}) }
   let(:six_oclock_hour) { 18 }
-  let(:now) {
-    tz = TZInfo::Timezone.get("America/New_York").current_period.offset.utc_total_offset
-    Time.new(2022, 3, 1, six_oclock_hour, 3, 0, tz)
-  }
+  let(:now) do
+    Time.zone = "America/New_York"
+    Time.zone.local(2022, 3, 1, six_oclock_hour, 3, 0)
+  end
   let(:user_1) {
     SlackService::SlackUser.new({
       id: "USERID1",
