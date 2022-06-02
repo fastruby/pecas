@@ -53,7 +53,7 @@ generated with the following scopes:
 * users:read.email
 
 Once set up we can use the rake task `notify:send_noko_format_warning['<name of slack group to alert>']`.
-This task is desined to be run once an hour (for best results - a few minutes
+This task is destined to be run once an hour (for best results - a few minutes
 after the hour) as it will only notify users Slack reports as being in the
 timezone currently within an hour of 8pm.
 
