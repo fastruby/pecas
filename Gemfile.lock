@@ -44,7 +44,6 @@ GEM
     arel (8.0.0)
     builder (3.2.4)
     byebug (11.1.3)
-    chronic (0.10.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -64,11 +63,6 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    delayed_job (4.1.10)
-      activesupport (>= 3.0, < 8.0)
-    delayed_job_active_record (4.1.7)
-      activerecord (>= 3.0, < 8.0)
-      delayed_job (>= 3.0, < 5)
     diff-lcs (1.4.4)
     docile (1.4.0)
     dotenv (2.7.6)
@@ -278,8 +272,6 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    whenever (1.0.0)
-      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -288,7 +280,6 @@ DEPENDENCIES
   byebug
   coffee-rails
   coveralls
-  delayed_job_active_record
   dotenv-rails
   email_spec
   factory_bot_rails
@@ -316,7 +307,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   vcr
   webmock
-  whenever
 
 RUBY VERSION
    ruby 2.5.8p224
