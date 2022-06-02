@@ -28,6 +28,7 @@ gem 'coffee-rails'
 
 gem 'dotenv-rails'
 gem 'noko'
+gem 'slack-ruby-client'
 
 gem 'twitter-bootstrap-rails'
 
