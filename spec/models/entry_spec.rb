@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Entry do
+
   describe "delegates" do
     it "email property to user" do
       email = "steve@ombulabs.com"
@@ -44,6 +45,22 @@ describe Entry do
     it "Returns hours with minutes if required" do
       entry = Entry.new(minutes: 90)
       expect(entry.length).to eql("1 hour, 30 minutes")
+    end
+  end
+
+  describe "#delete_past_entries" do
+    it "deletes entries older than the given date" do
+      Entry.delete_all
+
+      old_entry = create :entry, date: 11.months.ago
+      new_entry = create :entry, date: 3.months.ago
+
+      expect do
+        Entry.delete_older_than(5.months.ago)
+      end.to change(Entry, :count).from(2).to(1)
+
+      expect(Entry.exists?(new_entry.id)).to be_truthy
+      expect(Entry.exists?(old_entry.id)).to be_falsey
     end
   end
 end

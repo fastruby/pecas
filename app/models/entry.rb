@@ -7,6 +7,7 @@ class Entry < ActiveRecord::Base
   MINUTES_PER_HOUR = 60
 
   scope :today, lambda { where(date: Date.today) }
+
   scope :for_users_by_email, ->(emails) { joins(:user).where('users.email IN (?)', emails).preload(:user) }
 
   def length
@@ -19,5 +20,9 @@ class Entry < ActiveRecord::Base
 
     def time_label(label, value)
       "#{value} #{label.pluralize(value)}" if value > 0
+    end
+
+    def self.delete_older_than(date)
+      where('date < ?', date).delete_all
     end
 end
