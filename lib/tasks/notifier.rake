@@ -8,7 +8,7 @@ namespace :notify do
 
     p "Assessing time entries to send validation warnings if needed"
     p args.group_handle
-    service = TimeEntry.new(Date.today, SlackService::GroupMemberMessaging, TimeEntry::DescriptionRules, hour_of_day: eight_pm_hour)
+    service = TimeEntry.new(Date.current, SlackService::GroupMemberMessaging, TimeEntry::DescriptionRules, hour_of_day: eight_pm_hour)
     service.invalid_time_entries_alert(args.group_handle)
 
     p "Messages sent"
