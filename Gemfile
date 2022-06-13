@@ -46,6 +46,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'holidays'
 
 gem 'json'
+gem 'rack-mini-profiler'
 
 group :production do
   gem 'pg'

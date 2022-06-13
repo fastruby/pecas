@@ -159,6 +159,8 @@ GEM
     public_suffix (4.0.6)
     racc (1.5.2)
     rack (2.2.3.1)
+    rack-mini-profiler (3.0.0)
+      rack (>= 1.2.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.1.7)
@@ -299,6 +301,7 @@ DEPENDENCIES
   noko
   pg
   pry-byebug
+  rack-mini-profiler
   rails (~> 5.1.0)
   rails-controller-testing
   rails_12factor
