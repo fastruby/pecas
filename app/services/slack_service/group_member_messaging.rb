@@ -42,7 +42,7 @@ class SlackService::GroupMemberMessaging
         if now.in_time_zone(data.tz).hour == actionable_hour
           users[data.email] = data
         end
-        
+
         users
       end
     end
@@ -71,7 +71,7 @@ class SlackService::GroupMemberMessaging
           },
           {
             "type": "section",
-            "text": { "type": "mrkdwn", "text": entries.map{|entry| "* #{entry.description} (#{entry.length})" }.join("\n") }
+            "text": { "type": "mrkdwn", "text": format_desc(entries)}
           },
           {
             "type": "section",
@@ -79,6 +79,19 @@ class SlackService::GroupMemberMessaging
           },
         ]
       }
+    end
+
+    def format_desc(entries)
+      entries.map do |entry|
+        formatted_desc = entry.description.split(" ").map do |word|
+          if word.include?("#")
+            word = "`#{word}`"
+          else
+            word
+          end
+        end.join(" ")
+        "* #{formatted_desc} (#{entry.length})"
+      end.join("\n")
     end
 
     def time_entry_format_warning_prefix(member)
