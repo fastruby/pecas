@@ -115,4 +115,41 @@ describe SlackService::GroupMemberMessaging do
       expect(list_block[:text]).to include("20 minutes")
     end
   end
+
+  describe "_format_desc" do
+    let(:entry_1)   { create(:entry, description: "this is an entry", minutes: 120) }
+    let(:entry_2)   { create(:entry, description: "doing something #unbillable*", minutes: 90) }
+    let(:entry_3)   { create(:entry, description: "working on #pecas  #unbillable*  #calls", minutes: 20) }
+    let(:entry_4)   { create(:entry, description: "testing this entry with a dash #call-pecas  #unbillable*  #calls", minutes: 20) }
+
+    before do
+      allow(Slack::Web::Client).to receive(:new).and_return(client)
+      allow(SlackService).to receive(:find_usergroup_id).with("avengers", client).and_return([:ok, "GROUPID"])
+      allow(SlackService).to receive(:find_usergroup_user_ids).with("GROUPID", client).and_return([:ok, ["USERID1", "USERID2"]])
+      allow(SlackService).to receive(:find_slack_user).with("USERID1", client).and_return([:ok, user_1])
+      allow(SlackService).to receive(:find_slack_user).with("USERID2", client).and_return([:ok, user_2])
+      @service = SlackService::GroupMemberMessaging.new("avengers", six_oclock_hour, now)
+      @message = @service.send :time_entry_format_warning_message, user_1, [entry_1, entry_2, entry_3, entry_4]
+      @formatted_list = @message[:blocks][1][:text][:text].split("\n")
+    end
+
+    it "formats the entry description" do
+      expect(@formatted_list[0]).to eql("* this is an entry (2 hours)")
+    end
+
+    it "formats an entry description that includes a label" do
+      expect(@formatted_list[1]).to eql("* doing something `#unbillable*`  (1 hour, 30 minutes)")
+    end
+
+    it "formats an entry with multiple labels" do
+      expect(@formatted_list[2]).to eql("* working on `#pecas`   `#unbillable*`   `#calls`  (20 minutes)")
+    end
+
+    it "formats an entry with label that incudes a dash" do
+      expect(@formatted_list[3]).to eql("* testing this entry with a dash `#call-pecas`   `#unbillable*`   `#calls`  (20 minutes)")
+    end
+  end
+
+
+
 end
