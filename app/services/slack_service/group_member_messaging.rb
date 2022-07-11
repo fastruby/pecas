@@ -83,7 +83,7 @@ class SlackService::GroupMemberMessaging
 
     def format_desc(entries)
       entries.map do |entry|
-        formatted_desc = entry.description.gsub(/(#\w+\W)/) { |label| "`#{label}` " }
+        formatted_desc = entry.description.gsub(/(#[a-zA-Z|*|-]+)(?:)/) { |label| "`#{label}` " }
         "* #{formatted_desc} (#{entry.length})"
       end.join("\n")
     end
