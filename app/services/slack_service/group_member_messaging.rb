@@ -1,5 +1,6 @@
 class SlackService::GroupMemberMessaging
   attr_reader :members
+  DESC_REGEX = /(#[a-zA-Z|*|-]+)(?:)/
 
   ##
   # @param [String] group_handle The id of a group from a mesdsaging service: ex @ombuteam on Slack
@@ -83,7 +84,7 @@ class SlackService::GroupMemberMessaging
 
     def format_desc(entries)
       entries.map do |entry|
-        formatted_desc = entry.description.gsub(/(#[a-zA-Z|*|-]+)(?:)/) { |label| "`#{label}` " }
+        formatted_desc = entry.description.gsub(DESC_REGEX) { |label| "`#{label}` " }
         "* #{formatted_desc} (#{entry.length})"
       end.join("\n")
     end
