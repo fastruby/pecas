@@ -119,7 +119,7 @@ describe SlackService::GroupMemberMessaging do
   describe ".format_desc" do
 
     it "formats the entry description" do
-      let(:entry_1)   { build(:entry, description: "this is an entry", minutes: 120) }
+      entry_1 = build(:entry, description: "this is an entry", minutes: 120)
 
       formatted_entry = SlackService::GroupMemberMessaging.format_entry(entry_1)
 
@@ -127,7 +127,7 @@ describe SlackService::GroupMemberMessaging do
     end
 
     it "formats an entry description that includes a label" do
-      let(:entry_2)   { build(:entry, description: "doing something #unbillable*", minutes: 90) }
+      entry_2 = build(:entry, description: "doing something #unbillable*", minutes: 90)
 
       formatted_entry = SlackService::GroupMemberMessaging.format_entry(entry_1)
 
@@ -135,7 +135,7 @@ describe SlackService::GroupMemberMessaging do
     end
 
     it "formats an entry with multiple labels" do
-      let(:entry_3)   { build(:entry, description: "working on #pecas  #unbillable*  #calls", minutes: 20) }
+      entry_3 = build(:entry, description: "working on #pecas  #unbillable*  #calls", minutes: 20)
 
       formatted_entry = SlackService::GroupMemberMessaging.format_entry(entry_1)
 
@@ -144,7 +144,7 @@ describe SlackService::GroupMemberMessaging do
 
     it "formats an entry with label that incudes a dash" do
       let(:entry_4)   { build(:entry, description: "testing this entry with a dash #call-pecas  #unbillable*  #calls", minutes: 20) }
-      
+
       formatted_entry = SlackService::GroupMemberMessaging.format_entry(entry_1)
 
       expect(formatted_entry).to eql("* testing this entry with a dash `#call-pecas`   `#unbillable*`   `#calls`  (20 minutes)")
