@@ -115,4 +115,42 @@ describe SlackService::GroupMemberMessaging do
       expect(list_block[:text]).to include("20 minutes")
     end
   end
+
+  describe ".format_desc" do
+
+    it "formats the entry description" do
+      entry_1 = build(:entry, description: "this is an entry", minutes: 120)
+
+      formatted_entry = SlackService::GroupMemberMessaging.format_entry(entry_1)
+
+      expect(formatted_entry).to eql("* this is an entry (2 hours)")
+    end
+
+    it "formats an entry description that includes a label" do
+      entry_2 = build(:entry, description: "doing something #unbillable*", minutes: 90)
+
+      formatted_entry = SlackService::GroupMemberMessaging.format_entry(entry_2)
+
+      expect(formatted_entry).to eql("* doing something `#unbillable*`  (1 hour, 30 minutes)")
+    end
+
+    it "formats an entry with multiple labels" do
+      entry_3 = build(:entry, description: "working on #pecas  #unbillable*  #calls", minutes: 20)
+
+      formatted_entry = SlackService::GroupMemberMessaging.format_entry(entry_3)
+
+      expect(formatted_entry).to eql("* working on `#pecas`   `#unbillable*`   `#calls`  (20 minutes)")
+    end
+
+    it "formats an entry with label that incudes a dash" do
+      entry_4 = build(:entry, description: "testing this entry with a dash #call-pecas  #unbillable*  #calls", minutes: 20)
+
+      formatted_entry = SlackService::GroupMemberMessaging.format_entry(entry_4)
+
+      expect(formatted_entry).to eql("* testing this entry with a dash `#call-pecas`   `#unbillable*`   `#calls`  (20 minutes)")
+    end
+  end
+
+
+
 end

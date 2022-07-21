@@ -1,5 +1,6 @@
 class SlackService::GroupMemberMessaging
   attr_reader :members
+  DESC_REGEX = /(#[a-zA-Z|*|-]+)(?:)/
 
   ##
   # @param [String] group_handle The id of a group from a mesdsaging service: ex @ombuteam on Slack
@@ -26,6 +27,17 @@ class SlackService::GroupMemberMessaging
     :ok
   end
 
+  def self.format_desc(entries)
+    entries.map do |entry|
+      format_entry(entry)
+    end.join("\n")
+  end
+
+  def self.format_entry(entry)
+    formatted_desc = entry.description.gsub(DESC_REGEX) { |label| "`#{label}` " }
+    "* #{formatted_desc} (#{entry.length})"
+  end
+
     private
 
     def connect_client
@@ -42,7 +54,7 @@ class SlackService::GroupMemberMessaging
         if now.in_time_zone(data.tz).hour == actionable_hour
           users[data.email] = data
         end
-        
+
         users
       end
     end
@@ -71,7 +83,7 @@ class SlackService::GroupMemberMessaging
           },
           {
             "type": "section",
-            "text": { "type": "mrkdwn", "text": entries.map{|entry| "* #{entry.description} (#{entry.length})" }.join("\n") }
+            "text": { "type": "mrkdwn", "text": SlackService::GroupMemberMessaging.format_desc(entries)}
           },
           {
             "type": "section",
