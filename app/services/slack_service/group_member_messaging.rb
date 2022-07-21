@@ -27,6 +27,17 @@ class SlackService::GroupMemberMessaging
     :ok
   end
 
+  def self.format_desc(entries)
+    entries.map do |entry|
+      format_entry(entry)
+    end.join("\n")
+  end
+
+  def self.format_entry(entry)
+    formatted_desc = entry.description.gsub(DESC_REGEX) { |label| "`#{label}` " }
+    "* #{formatted_desc} (#{entry.length})"
+  end
+
     private
 
     def connect_client
@@ -72,7 +83,7 @@ class SlackService::GroupMemberMessaging
           },
           {
             "type": "section",
-            "text": { "type": "mrkdwn", "text": format_desc(entries)}
+            "text": { "type": "mrkdwn", "text": SlackService::GroupMemberMessaging.format_desc(entries)}
           },
           {
             "type": "section",
@@ -80,13 +91,6 @@ class SlackService::GroupMemberMessaging
           },
         ]
       }
-    end
-
-    def format_desc(entries)
-      entries.map do |entry|
-        formatted_desc = entry.description.gsub(DESC_REGEX) { |label| "`#{label}` " }
-        "* #{formatted_desc} (#{entry.length})"
-      end.join("\n")
     end
 
     def time_entry_format_warning_prefix(member)
