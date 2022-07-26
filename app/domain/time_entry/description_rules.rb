@@ -1,6 +1,7 @@
 class TimeEntry::DescriptionRules
   JIRA_REGEX = /(?:\s|^)([A-Z]+-[0-9]+)(?=\s|$)/
   MIN_WORD_COUNT = 4
+  KEYWORDS = ["#english", "english", "english class", "1:1", "one on one", "1-1", "end of week", "weekly call", "weekly meeting", "emails/slack", "catch up", "catching up", "standup", "stand up", "check-in", "check in", "learning", "learn", "donut"]
 
   def initialize(entry, ruleset = :internal_employee)
     @description = entry.description
@@ -26,6 +27,10 @@ class TimeEntry::DescriptionRules
       @description.downcase.include?("http")
     end
 
+    def has_keywords?
+      !!(@description.downcase =~ Regexp.union(KEYWORDS))
+    end
+
     # Removes square brackets and commas from the string before match as the
     #   "official" Jira regex won't match unless the jira id is preceeded by
     #   a space
@@ -34,6 +39,10 @@ class TimeEntry::DescriptionRules
     end
 
     def internal_employee
-      has_word_count? && (has_calls_tag? || has_url? || has_jira_ticket?)
+      if has_keywords?
+        has_word_count?
+      else
+        has_word_count? && (has_calls_tag? || has_url? || has_jira_ticket?)
+      end
     end
 end
