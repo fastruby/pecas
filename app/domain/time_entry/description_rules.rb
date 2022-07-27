@@ -1,7 +1,7 @@
 class TimeEntry::DescriptionRules
   JIRA_REGEX = /(?:\s|^)([A-Z]+-[0-9]+)(?=\s|$)/
   MIN_WORD_COUNT = 4
-  KEYWORDS = ["#english", "english", "english class", "1:1", "one on one", "1-1", "end of week", "weekly call", "weekly meeting", "emails/slack", "catch up", "catching up", "standup", "stand up", "check-in", "check in", "learning", "learn", "donut"]
+  KEYWORDS = ["#english", "english", "english class", "1:1", "one on one", "1-1", "end of week", "weekly call", "weekly meeting", "emails/slack", "email", "slack" "catch up", "catching up", "standup", "stand up", "check-in", "check in", "learning", "learn", "donut"]
 
   def initialize(entry, ruleset = :internal_employee)
     @description = entry.description
