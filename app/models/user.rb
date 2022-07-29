@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :entries
 
   scope :active, -> { where(state: "active") }
+  scope :with_missing_hours_notification_enabled, -> { where(missing_hours_notification_enabled: true)}
 
   def self.send_reminders
     return if Date.today.saturday? || Date.today.sunday? || holiday?
