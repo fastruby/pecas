@@ -76,3 +76,5 @@ group :development, :test do
   gem 'faraday'
   gem "byebug"
 end
+
+gem "sidekiq", "~> 6.5"
