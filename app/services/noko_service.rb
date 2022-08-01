@@ -33,7 +33,28 @@ class NokoService
     save_entries_for(results)
 
     import_entries(start_date, end_date, page + 1) if results.try(:link).try(:next)
-end
+  end
+
+  def self.noko_send_missing_hours_reminder(messaging_service: nil)
+    users_to_notify = User.includes(:entries).with_missing_hours_notification_enabled
+
+    today = Date.today
+    weekday = today.strftime("%A")
+    start_date = (today - today.wday).to_datetime
+    target_hours = today.wday() < 5 ? (today.wday * 8) : 40
+
+    message = "Hello <@#{user.slack_id}>!\nIt's #{weekday}! By now, you should have logged a total of #{target_hours} hours to be on track for a regular 40-hour week.\
+        \n\n*So far, you have logged #{total} hours.*\n\nCheers!"
+
+    users_to_notify.each do |user|
+      entries_minutes = user.entries.where(where(entries: {date: start_date..today})).sum(:minutes) 
+
+      hours =  entries_minutes / 60
+      minutes = entries_minutes % 60
+
+      NokoReminderJob.perfom(slack_id: user.slack_id, message: message)
+    end
+  end
 
   private
 
