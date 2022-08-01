@@ -13,4 +13,10 @@ namespace :notify do
 
     p "Messages sent"
   end
+
+  desc "Sends Slack warning for missing hours in noko"
+  task noko_missing_entries_reminder: :environment do
+    NokoService.send_missing_hours_reminder
+    p "Reminder Sent"
+  end
 end
