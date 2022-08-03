@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post 'noko/subscribe'
+  post 'noko/unsubscribe'
+
   get 'leaderboard/users'
 
   get 'leaderboard/projects'
