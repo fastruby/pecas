@@ -51,7 +51,7 @@ class NokoService
       message = "Hello <@#{user.slack_id}>!\nIt's #{weekday}! By now, you should have logged a total of #{target_hours} hours to be on track for a regular 40-hour week.\
         \n\n*So far, you have logged #{hours}:#{minutes} hours.*\n\nCheers!"
 
-      NokoReminderJob.new.perform(slack_id: user.slack_id, message: message)
+      SlackService.send_message(user.slack_id, message, Slack::Web::Client.new)
     end
   end
 
