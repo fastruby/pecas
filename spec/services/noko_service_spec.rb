@@ -73,6 +73,17 @@ describe NokoService, :vcr do
           end.to change(Entry, :count).by(3)
         end
       end
+
+      context "when sending a missing hours reminder notification" do
+        let(:user) { create(:user, name: 'Foo', email: 'bar@example.com', missing_hours_notification_enabled: true, slack_id: "78FFXDFS") }
+        let(:message) { "Hello <@#{user.slack_id}>!\nIt's #{Date.today.strftime("%A")}! By now, you should have logged a total of 24 hours to be on track for a regular 40-hour week.        \n\n*So far, you have logged 22:17 hours.*\n\nCheers!" }
+        let!(:entry) { create(:entry, minutes: 1337, user_id: user.id) }
+
+        it "sends a slack message to the user" do
+          expect(SlackService).to receive(:send_message).with(user.slack_id, message, Slack::Web::Client)
+          described_class.send_missing_hours_reminder
+        end
+      end
     end
   end
 end

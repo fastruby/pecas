@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=UJPMD9S95&text=Hello+%3C%40UJPMD9S95%3E%21%0AIt%27s+Wednesday%21+By+now%2C+you+should+have+logged+a+total+of+24+hours+to+be+on+track+for+a+regular+40-hour+week.++++++++%0A%0A%2ASo+far%2C+you+have+logged+0%3A0+hours.%2A%0A%0ACheers%21
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Client/1.0.0
+      Authorization:
+      - Bearer xoxb-2404044359-3155686357302-DW3WZxAkOIFkplFcYxU7iZaZ
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 04 Aug 2022 04:36:26 GMT
+      Server:
+      - Apache
+      X-Powered-By:
+      - HHVM/4.153.1
+      Access-Control-Allow-Origin:
+      - "*"
+      Referrer-Policy:
+      - no-referrer
+      X-Slack-Backend:
+      - r
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      X-Oauth-Scopes:
+      - usergroups:read,users.profile:read,users:read.email,users:read,chat:write,commands
+      X-Accepted-Oauth-Scopes:
+      - chat:write
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Slack-Req-Id:
+      - ce1fecdaa7ae867901d7f94bf0e288f7
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '567'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Envoy-Upstream-Service-Time:
+      - '70'
+      X-Backend:
+      - main_normal main_bedrock_normal_with_overflow main_canary_with_overflow main_bedrock_canary_with_overflow
+        main_control_with_overflow main_bedrock_control_with_overflow
+      X-Server:
+      - slack-www-hhvm-main-iad-gtwd
+      X-Slack-Shared-Secret-Outcome:
+      - no-match
+      Via:
+      - envoy-www-iad-w02d, envoy-edge-iad-l9i6
+      X-Edge-Backend:
+      - envoy-www
+      X-Slack-Edge-Shared-Secret-Outcome:
+      - no-match
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"D03QMCENNSY","ts":"1659587786.056409","message":{"bot_id":"B034S9VHCBU","type":"message","text":"Hello
+        <@UJPMD9S95>!\nIt''s Wednesday! By now, you should have logged a total of
+        24 hours to be on track for a regular 40-hour week.        \n\n*So far, you
+        have logged 0:0 hours.*\n\nCheers!","user":"U034KL6AH8W","ts":"1659587786.056409","app_id":"A034JJXGSKX","team":"T02BW1AAK","bot_profile":{"id":"B034S9VHCBU","app_id":"A034JJXGSKX","name":"Time
+        Tracking Helper","icons":{"image_36":"https:\/\/avatars.slack-edge.com\/2022-06-05\/3623981511283_1806933815f5d5209b9d_36.jpg","image_48":"https:\/\/avatars.slack-edge.com\/2022-06-05\/3623981511283_1806933815f5d5209b9d_48.jpg","image_72":"https:\/\/avatars.slack-edge.com\/2022-06-05\/3623981511283_1806933815f5d5209b9d_72.jpg"},"deleted":false,"updated":1654473598,"team_id":"T02BW1AAK"},"blocks":[{"type":"rich_text","block_id":"awz","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"Hello
+        "},{"type":"user","user_id":"UJPMD9S95"},{"type":"text","text":"!\nIt''s Wednesday!
+        By now, you should have logged a total of 24 hours to be on track for a regular
+        40-hour week.        \n\n"},{"type":"text","text":"So far, you have logged
+        0:0 hours.","style":{"bold":true}},{"type":"text","text":"\n\nCheers!"}]}]}]}}'
+  recorded_at: Thu, 04 Aug 2022 04:36:25 GMT
+recorded_with: VCR 6.0.0
