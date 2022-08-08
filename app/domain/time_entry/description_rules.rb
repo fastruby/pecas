@@ -1,6 +1,5 @@
 class TimeEntry::DescriptionRules
   JIRA_REGEX = /(?:\s|^)([A-Z]+-[0-9]+)(?=\s|$)/
-  MIN_WORD_COUNT = 4
 
   def initialize(entry, ruleset = :internal_employee)
     @description = entry.description
@@ -15,7 +14,7 @@ class TimeEntry::DescriptionRules
     private
 
     def has_word_count?
-      @description.split.size > MIN_WORD_COUNT - 1
+      @description.gsub(/[\[\]\,\.]/, ' ').scan(JIRA_REGEX).size > 1 && @description.split.size > 0
     end
 
     def has_calls_tag?
