@@ -46,15 +46,11 @@ describe TimeEntry::DescriptionRules do
       end
 
       it "will fail if too short" do
-        entry = Entry.new(description: "[OSS-136]: added")
+        entry = Entry.new(description: "[OSS-136]")
         validator = TimeEntry::DescriptionRules.new(entry)
         expect(validator.valid?).to eql(false)
 
-        entry = Entry.new(description: "http://www.example.com added")
-        validator = TimeEntry::DescriptionRules.new(entry)
-        expect(validator.valid?).to eql(false)
-
-        entry = Entry.new(description: "#calls added")
+        entry = Entry.new(description: "")
         validator = TimeEntry::DescriptionRules.new(entry)
         expect(validator.valid?).to eql(false)
       end
