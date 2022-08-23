@@ -16,7 +16,11 @@ class TimeEntry::DescriptionRules
     private
 
     def has_word_count?
-      @description.split.size > MIN_WORD_COUNT - 1
+      if has_jira_ticket?
+        @description.split.size > 1
+      else
+        @description.split.size > 0
+      end
     end
 
     def has_calls_tag?
