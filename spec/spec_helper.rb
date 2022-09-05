@@ -36,6 +36,14 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  VCR.configure do |config|
+    config.cassette_library_dir = "fixtures/vcr_cassettes"
+    config.hook_into :webmock
+
+    config.filter_sensitive_data('$SLACK_OAUTH_TOKEN') { ENV['SLACK_OAUTH_TOKEN'] }
+    config.filter_sensitive_data('$NOKO_TOKEN') { ENV['NOKO_TOKEN'] }
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
@@ -85,4 +93,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
 end
