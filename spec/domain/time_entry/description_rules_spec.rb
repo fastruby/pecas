@@ -45,30 +45,12 @@ describe TimeEntry::DescriptionRules do
         expect(validator.valid?).to eql(true)
       end
 
-      it "will pass if it has a keyword" do
-        entry = Entry.new(description: "This is an English class entry")
-        validator = TimeEntry::DescriptionRules.new(entry)
-        expect(validator.valid?).to eql(true)
-
-        entry = Entry.new(description: "1:1 with Amanda entry")
-        validator = TimeEntry::DescriptionRules.new(entry)
-        expect(validator.valid?).to eql(true)
-
-        entry = Entry.new(description: "Email/Slack catch up entry")
-        validator = TimeEntry::DescriptionRules.new(entry)
-        expect(validator.valid?).to eql(true)
-      end
-
       it "will fail if too short" do
-        entry = Entry.new(description: "[OSS-136]: added")
+        entry = Entry.new(description: "[OSS-136]")
         validator = TimeEntry::DescriptionRules.new(entry)
         expect(validator.valid?).to eql(false)
 
-        entry = Entry.new(description: "http://www.example.com added")
-        validator = TimeEntry::DescriptionRules.new(entry)
-        expect(validator.valid?).to eql(false)
-
-        entry = Entry.new(description: "#calls added")
+        entry = Entry.new(description: "")
         validator = TimeEntry::DescriptionRules.new(entry)
         expect(validator.valid?).to eql(false)
       end
