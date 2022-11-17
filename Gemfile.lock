@@ -153,6 +153,8 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
+      racc (~> 1.4)
     pg (1.4.4)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -288,6 +290,7 @@ GEM
 
 PLATFORMS
   -darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   byebug
