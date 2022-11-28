@@ -12,6 +12,8 @@ if ENV['COVERAGE'] == "true"
   SimpleCov.start 'rails'
 end
 
+require 'vcr'
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -34,6 +36,14 @@ RSpec.configure do |config|
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
+  end
+
+  VCR.configure do |config|
+    config.cassette_library_dir = "fixtures/vcr_cassettes"
+    config.hook_into :webmock
+
+    config.filter_sensitive_data('$SLACK_OAUTH_TOKEN') { ENV['SLACK_OAUTH_TOKEN'] }
+    config.filter_sensitive_data('$NOKO_TOKEN') { ENV['NOKO_TOKEN'] }
   end
 
 # The settings below are suggested to provide a good initial experience
@@ -85,4 +95,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
 end
