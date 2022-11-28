@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,47 +12,50 @@
 
 ActiveRecord::Schema.define(version: 20160421164630) do
 
-  create_table "entries", force: :cascade do |t|
-    t.text     "description"
-    t.integer  "minutes"
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.date     "date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
-  create_table "project_leaderboards", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "total_minutes"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.date     "start_date"
-    t.date     "end_date"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string   "name"
+  create_table "entries", id: :serial, force: :cascade do |t|
+    t.text "description"
+    t.integer "minutes"
+    t.integer "user_id"
+    t.integer "project_id"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean  "enabled"
   end
 
-  create_table "user_leaderboards", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "total_minutes"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.date     "start_date"
-    t.date     "end_date"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
+  create_table "project_leaderboards", id: :serial, force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "total_minutes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "email"
-    t.string   "state"
+    t.date "start_date"
+    t.date "end_date"
+  end
+
+  create_table "projects", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "enabled"
+  end
+
+  create_table "user_leaderboards", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "total_minutes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
+  end
+
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "state"
   end
 
 end
